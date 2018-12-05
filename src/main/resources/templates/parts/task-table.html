@@ -1,0 +1,23 @@
+<!-- TABLE HEADER -->  
+ <thead>
+    <tr class="text-muted">
+      <th width="5%" scope="col" th:text="#{label.id}"></th>
+      <th width="15%" scope="col" th:text="#{label.start}"></th>
+      <th width="15%" scope="col" th:text="#{label.end}"></th>
+      <th width="40%" scope="col" th:text="#{label.name}"></th>
+      <th width="25%" scope="col" th:text="#{label.category}"></th>
+    </tr>
+  </thead>
+<!-- TABLE HEADER -->  
+<!-- TABLE BODY -->
+  <tbody>
+     <tr th:each="task : ${taskList}" id="table-row" class="text-muted" th:data-id="${task.id}">	
+		 <td th:text="${task.id}"></td>
+		 <td th:text="${#dates.format(task.dateOfAdded, 'yyyy-MM-dd HH:mm')}">
+		 <td th:text="${#dates.format(task.deadline, 'yyyy-MM-dd HH:mm')}">
+		 <td th:text="${task.taskName}"></td>
+		 <td th:text="${task.taskCategory}"></td>
+		
+    </tr> 
+</tbody>
+<!-- TABLE BODY -->

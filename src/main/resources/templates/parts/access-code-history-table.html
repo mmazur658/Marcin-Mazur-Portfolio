@@ -1,0 +1,16 @@
+<!-- TABLE HEADER -->  
+ <thead>
+    <tr class="text-muted" >
+      <th scope="col" th:text="#{label.date}"></th>
+      <th scope="col" th:text="#{label.action}"></th>
+    </tr>
+  </thead>
+<!-- TABLE HEADER -->  
+<!-- TABLE BODY -->
+  <tbody>
+     <tr th:each="accessCodeHistory : ${accessCodeHistoryList}" class="text-muted" >	
+		 <td th:text="${#dates.format(accessCodeHistory.actionDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+		 <td th:text="${accessCodeHistory.action}"></td>
+    </tr> 
+</tbody>
+<!-- TABLE BODY -->

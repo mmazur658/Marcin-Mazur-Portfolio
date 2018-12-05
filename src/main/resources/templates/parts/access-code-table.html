@@ -1,0 +1,20 @@
+<!-- TABLE HEADER -->  
+ <thead>
+    <tr>
+      <th scope="col" th:text="#{label.id}"></th>
+      <th scope="col" th:text="#{label.code}"></th>
+      <th scope="col" th:text="#{label.owner}"></th>
+      <th scope="col" th:text="#{label.date.of.added}"></th>
+    </tr>
+  </thead>
+<!-- TABLE HEADER -->  
+<!-- TABLE BODY -->
+  <tbody>
+     <tr th:each="accessCode : ${accessCodeList}" id="table-row" class="text-muted" th:data-id="${accessCode.id}">	
+		 <td th:text="${accessCode.id}"></td>
+		 <td th:text="${accessCode.accessCodeValue}"></td>
+		 <td th:text="${accessCode.accessCodeOwner}"></td>
+		 <td th:text="${#dates.format(accessCode.dateOfAdded, 'yyyy-MM-dd HH:mm:ss')}">
+    </tr> 
+</tbody>
+<!-- TABLE BODY -->

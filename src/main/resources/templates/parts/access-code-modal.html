@@ -1,0 +1,170 @@
+<div class="container" id="access-code-container">
+
+<!-- SECTION 1 - SHOW DATA -->
+	<div id="showAccessCodeDataSection">
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.id}"></span>			
+			</div>		
+			<div class="col-md-8">
+				<span th:text="${accessCode.id}"></span>
+			</div>	
+		</div>
+		<hr>	
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.code}"></span>			
+			</div>		
+			<div class="col-md-8">
+				<span th:text="${accessCode.accessCodeValue}"></span>
+			</div>	
+		</div>
+		<hr>
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.owner}"></span>			
+			</div>		
+			<div class="col-md-8">
+				<span th:text="${accessCode.accessCodeOwner}"></span>
+			</div>	
+		</div>
+		<hr>
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.date.of.added}"></span>			
+			</div>		
+			<div class="col-md-8">
+				<span th:text="${#dates.format(accessCode.dateOfAdded, 'yyyy-MM-dd HH:mm')}"></span>
+			</div>	
+		</div>
+		<hr>
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.status}"></span>			
+			</div>		
+			<div class="col-md-2">
+			    <span class="badge badge-success" th:if="${accessCode.isActive}" th:text="#{label.active.2}"></span>
+    			<span class="badge badge-light" th:unless="${accessCode.isActive}" th:text="#{label.inactive.2}"></span>
+			</div>	
+		</div>
+		<hr>
+		<h6 class="ml-4 font-weight-bold" th:text="#{label.description}"></h6>
+		<div class="row border mx-1">
+			<div class="col-md-12 mx-1">
+				<p style="height: 150px; overflow: auto;" class="text-justify pl-1 pr-3 py-3" th:text="${accessCode.accessCodeDescription}"></p>
+			</div>
+		</div>
+		<div class="row my-3">
+			<div class="col-md-4">
+				<button id="editAccessCodeModalBtn" class="btn btn-block bg-d-grey text-white" th:text="#{button.edit}"></button>
+			</div>
+			<div class="col-md-4">
+				<button id="accessCodeHistoryBtn" class="btn btn-block bg-d-grey text-white" th:text="#{button.history}"></button>
+			</div>
+			<div class="col-md-4">
+				<button id="closeAccessCodeModalBtn" class="btn btn-block bg-d-grey text-white" data-dismiss="modal" th:text="#{button.close}"></button>
+			</div>			
+		</div>
+	</div>
+<!-- SECTION 1 - SHOW DATA -->
+<!-- SECTION 2 - EDIT DATA -->
+	<div id="editAccessCodeDataSection">
+		<form method="post" id="editAccessCodeForm" action="access-code/update-access-code-details">
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.id}"></span>			
+				</div>		
+				<div class="col-md-8">
+					<input id="accessCodeIdHolder" th:value="${accessCode.id}"type="text" disabled class="form-control" >
+				</div>	
+			</div>
+			<hr>	
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.code}"></span>			
+				</div>		
+				<div class="col-md-8">
+					<input type="text" id="accessCodeValueInputForm" class="form-control" th:value="${accessCode.accessCodeValue}" disabled>
+				</div>	
+			</div>
+			<hr>
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.owner}"></span>			
+				</div>		
+				<div class="col-md-8">
+					<input type="text" id="accessCodeOwnerInputForm" class="form-control" th:value="${accessCode.accessCodeOwner}">
+				</div>	
+			</div>
+			<hr>
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.date.of.added}"></span>
+				</div>		
+				<div class="col-md-8">	
+					<input class="datepicker-here form-control" data-timepicker="true" data-time-format='hh:ii' id="accessCodeDateInputForm" type='text' data-position="top right" data-language='pl' th:value="${#dates.format(accessCode.dateOfAdded, 'yyyy-MM-dd HH:mm')}"/>		
+				</div>
+			</div>
+			<hr>
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.status}"></span>			
+				</div>		
+				<div class="col-md-8">
+					<label class="custom-task-switch">					
+					  <input type="checkbox" id="accessCodeIsActiveInputForm" th:checked="${accessCode.isActive}" >
+					  <span class="slider round"></span>
+					</label>	
+				</div>	
+			</div>
+			<hr>
+			<h6 class="ml-4 font-weight-bold" th:text="#{label.description}"></h6>	
+			<div class="row mx-1">
+				<div class="col-md-12">
+					<div class="form-group">
+						<textarea class="form-control p-3 m-0" rows="4" id="accessCodeDescription" th:text="${accessCode.accessCodeDescription}"></textarea>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row my-3">
+				<div class="col-md-6">
+					<button type="submit" id="confirmAccessCodeEditBtn" class="btn btn-block bg-d-grey text-white"><i class="fas fa-check"></i></button>
+				</div>
+				<div class="col-md-6">
+					<a id="cancelAccessCodeEditBtn" class="btn btn-block bg-d-grey text-white"><i class="fas fa-times"></i></a>
+				</div>			
+			</div>
+		</form>
+	</div>
+<!-- SECTION 2 - EDIT DATA -->
+<!-- SECTION 3 - HISTORY -->
+	<div id="accessCodeHistorySection">
+		<div class="row text-muted">
+			<div class="col-md-4">
+				<h5 th:text="#{access.code.modal.edit.title}"></h5>
+			</div>
+			<div class="col-md-7">
+				<h5 class="font-weight-bold" th:text="${accessCode.accessCodeValue}"></h5>
+			</div>		
+		
+		</div>
+		<div class="row" style="min-height: 420px; overflow: auto">
+			<table id="accessCodeHistoryTable" class="table table-sm table-striped table-hover" >
+				<!-- ACCESS CODE HISTORY -->
+			</table>			
+		</div>	
+		<div class="row my-3">	
+			<div class="col-md-12">
+				<button id="backButton" class="btn btn-block bg-d-grey text-white" th:text="#{button.back}"></button>
+			</div>			
+		</div>
+	</div>
+<!-- SECTION 3 - HISTORY -->
+</div>
+<!-- SCRIPTS & DATEPICKER -->
+<script type="text/javascript" th:src="@{/js/access-code-modal.js}"></script>
+<link th:href="@{/css/datepicker.min.css}" rel="stylesheet" type="text/css">
+<script th:src="@{/js/datepicker.min.js}"></script>
+<script th:src="@{/js/i18n/datepicker.en.js}"></script>
+<script th:src="@{/js/i18n/datepicker.pl.js}"></script>

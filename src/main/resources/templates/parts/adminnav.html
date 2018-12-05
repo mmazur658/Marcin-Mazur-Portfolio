@@ -1,0 +1,148 @@
+<!-- ADMINISTRATOR PANEL NAVBAR -->
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-d-grey">  
+	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#adminNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		
+	    <div class="collapse navbar-collapse" id="adminNav">	
+<!-- LINKS -->    
+			<ul class="navbar-nav mr-auto">
+			    <li class="nav-item">
+			        <a class="nav-link" href="/"><h5 class="font-weight-bold">MARCIN MAZUR - PORTFOLIO</h5></a>
+			    </li>
+			    <li class="nav-item">
+			        <a class="nav-link pt-2" th:href="@{/administrator-panel/dashboard}">Dashboard</a>
+				</li>
+			    <li class="nav-item">
+			        <a class="nav-link pt-2" th:href="@{/administrator-panel/statistics}" th:text="#{nav.stats}"></a>
+			    </li>
+			     <li class="nav-item">
+			        <a class="nav-link pt-2" th:href="@{/administrator-panel/access-codes}" th:text="#{nav.access.codes}"></a>
+			    </li>
+			    <li class="nav-item">
+			        <a class="nav-link pt-2" th:href="@{/administrator-panel/tasks}" th:text="#{nav.tasks}"></a>
+			    </li>
+			</ul>
+<!-- LINKS --> 
+<!-- MESSAGES AND NOTIFICATIONS -->	
+			<ul class="navbar-nav nav-flex-icons">
+<!-- CONTACT FORM MESSAGES -->			
+			    <li class="nav-item">
+			       <a class="nav-link" th:href="@{/administrator-panel/contact-form-messages}">
+			       		<i class="fas fa-comment-alt px-2 pt-3"></i>	
+			       		<span id="contactFormMessageBadge" class="badge badge-warning"></span>		       
+			       </a>			       
+			    </li>
+<!-- CONTACT FORM MESSAGES -->	
+<!-- EMAILS -->				    
+			    <li class="nav-item">
+			        <a class="nav-link">
+			        	<i class="fas fa-envelope px-2 pt-3"></i>	
+			        	<span class="badge badge-warning">55</span>	
+			        	<i class="fas fa-ban fa-3x" style="position: absolute; z-index: 1; top: 6px; left: 5px; color: #E04B26"  ></i>	        	
+			        </a>			        
+			    </li>
+<!-- EMAILS -->	
+<!-- NOTIFICATIONS -->	<!-- NOTIFICATION MODAL TRIGGER -->	
+ 			<li class="nav-item mr-1" >
+			    <a class="nav-link" data-toggle="modal" data-target="#notificationModal" id="notificationModalIconTrigger">
+			        <i class="fas fa-bell px-2 pt-3"></i>
+			        <span id="notificationBadge" class="badge badge-warning"></span>		  		        
+			    </a>
+
+ 			</li>  
+
+ <!-- NOTIFICATIONS -->	<!-- NOTIFICATION MODAL TRIGGER -->	
+			</ul>
+<!-- MESSAGES AND NOTIFICATIONS --> 
+<!-- PROFILE AND LANGUAGE --> 
+	<button type="button" class="p-0" data-toggle="modal" data-target="#fullHeightModalRight" style="background: transparent; border: none;">
+		<img class="mb-1" th:src="@{/img/mazur.png}" height="48px" width="48px" ></img>		 
+	</button>
+<!-- PROFILE AND LANGUAGE --> 	
+		</div>	
+	</nav>
+	<script type="text/javascript" th:src="@{/js/notification-modal.js}"></script>  
+<!-- ADMINISTRATOR PANEL NAVBAR -->	
+<!-- NOTIFICATION MODAL -->
+				<div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="#notificationModalTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header bg-grey">
+					        <h6 class="modal-title text-white font-weight-bold" id="notificationModalTitle" th:text="#{label.notifications}"></h6>
+					        <button id="close-modal-button" type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+				      </div>				      			      
+				      <div id="modal-body-contect" class="modal-body bg-l-grey" style="overflow: auto; max-height: 500px;">
+				      	<div id="notification-modal">
+<!-- NOTIFICATION MODAL TABLE -->
+<!-- * * * * * * * * * * * *  -->
+<!-- NOTIFICATION MODAL TABLE -->
+						</div>
+					 </div>		     
+				 </div>
+			</div>
+		</div>			
+<!-- NOTIFICATION MODAL --> 
+<!-- ADMINISTRATOR MODAL -->
+<div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">  
+    <div class="modal-dialog modal-full-height modal-right" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-d-grey">
+          <h4 class="modal-title w-100 text-white font-weight-bold" id="myModalLabel">Mazur Marcin - Administrator</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">        	
+            <span aria-hidden="true" class="text-white">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body bg-l-grey">
+        	<div class="row">
+        		<div class="col-md-6">
+        		 	<a href="?lang=pl_pl"><img class="mb-3 img-fluid" style="opacity: 0.7;" th:src="@{/img/poland_flag.png}" alt="Poland Flag"></a>
+        		</div>
+        		<div class="col-md-6">
+        			<a href="?lang=en_us"><img class="mb-3 img-fluid" style="opacity: 0.7;" th:src="@{/img/united_kingdom_flag.png}" alt="United Kingdom Flag" ></a>
+        		</div>
+        	</div>
+
+			<section id="changePasswordSection">				
+			
+				<div id="buttonSection" class="mt-2">
+					 <button id="changePasswordButton" type="button" class="btn btn-block bg-d-grey mx-1" th:text="#{nav.change.pass}"></button>	
+				</div>
+				
+				<div id="formSection" class="mt-2">
+	
+					
+					<span id="usernameHolder" sec:authentication="name" style="display: none;"></span>
+					<form class="form-signin mt-2" method="POST" id="changePasswordForm" action="admin-action/check-password">
+					<div class="row">
+						<div class="col-md-6 mr-0">
+							 <button id="confirmPasswordChangeButton" type="submit" class="btn btn-block bg-d-grey mx-1 py-2 my-2"><i class="fas fa-check fa-2x"></i></button>	
+						</div>
+						<div class="col-md-6 ml-0">
+							 <a id="cancelPasswordChangeButton" type="button" class="btn btn-block bg-d-grey mx-1 py-2 my-2"><i class="fas fa-times fa-2x text-white"></i></a>	
+						</div>				
+					</div>
+						<input class="form-control" id="oldPassword" type="password" placeholder="Stare hasło"/>
+						
+					    <input type="password" id="newPassword" class="form-control" name="passwordOne" placeholder="Nowe Hasło" required />
+	
+						<input class="form-control" id="confirmNewPassword" type="password"  placeholder="Potwierdz nowe hasło" required/>			
+					</form>
+				</div>
+			</section>
+			
+        </div>
+        <div class="modal-footer justify-content-center bg-l-grey">
+        	<form id="logoutForm" name="logoutForm" th:action="@{/logout}" method="POST" >					   
+		    </form>
+		   <button id="logoutButton" type="button" class="btn btn-block bg-d-grey mx-1" th:text="#{button.logout}"></button>	
+	       <button type="button" class="btn btn-block bg-d-grey mx-1" data-dismiss="modal" th:text="#{button.close}"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ADMINISTRATOR MODAL -->
+<!-- Scripts -->
+<script type="text/javascript" th:src="@{/js/admin-nav.js}"></script>

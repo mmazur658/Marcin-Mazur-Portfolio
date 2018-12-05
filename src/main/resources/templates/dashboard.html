@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head><!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+
+	<link th:replace="parts/header"></link>
+	<title th:text="#{dashboard.title}"></title>  
+
+</head> <!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+<body>
+<!-- ADD CLASS 'fade-out' TO BODY TO GET SMOOTH PAGE LOADING EFFECT -->
+<script>document.body.className += ' fade-out';</script>
+<!-- NAVBAR & INTRO -->
+	<nav th:replace="parts/adminnav"></nav>
+<!-- NAVBAR & INTRO -->
+<main class="mt-5 bg-l-grey" style="min-height: 100%;">
+<div class="container" >
+<!-- FIRST ROW -->
+	<div class="row">
+<!-- FIRST CARD -->	
+		<div class="col-md-4 mt-5 ">		
+			<div class="card " >
+				<div class="card-body px-0 pb-0">
+					<div class="row pb-3">
+						<div class="col-md-7">
+							<h3 class="card-title text-muted pl-3 counter-count" th:text="${numberOfContactFormMessage}"></h3>
+					        <p class="card-text text-muted pl-3" th:text="#{dashboard.new.messages}"></p>
+						</div>
+						<div class="col-md-5 text-center">
+							<i id="card-icon" class="fas fa-comment-alt fa-3x text-muted align-middle"></i>
+						</div>
+					</div>
+			        <a th:href="@{/administrator-panel/contact-form-messages}" class="btn bg-md-grey text-white btn-block py-2" th:text="#{label.more}"></a>
+			    </div>			    
+			</div>
+		</div>	
+<!-- FIRST CARD -->		
+<!-- SECOND CARD -->
+		<div class="col-md-4 mt-5" >		
+			<div class="card " style="position: relative;">			
+				<div class="card-body px-0 pb-0">
+					<div class="row pb-3">
+						<div class="col-md-7">	
+							<h3 class="card-title text-muted pl-3 counter-count">					
+								27
+							</h3>
+					        <p class="card-text text-muted pl-3" th:text="#{dashboard.new.emails}"></p>
+						</div>
+						<div class="col-md-5 text-center">
+							<i id="card-icon" class="fas fa-envelope fa-3x text-muted align-middle"></i>
+						</div>
+					</div>
+			        <a href="#!" class="btn bg-md-grey text-white btn-block py-2" th:text="#{label.more}"></a>
+			    </div>			 
+<!-- UNDER CONSTRUCTION -->			  
+			    <img th:src="@{/img/long-caution-tape.png}" style=" z-index: 1; position: absolute;" width="100%" height="25px"/>
+				<img th:src="@{/img/constr-sign.png}" style=" z-index: 1; position: absolute; max-width: 50%; max-height: 50%; left: 35%; top:25%"/>			   
+				<img th:src="@{/img/long-caution-tape.png}" style=" z-index: 1; position: absolute; bottom:0;" width="100%" height="25px"/>  
+<!-- UNDER CONSTRUCTION -->					
+			</div>
+		</div>
+<!-- SECOND CARD -->	
+<!-- THIRD CARD -->		
+		<div class="col-md-4 mt-5 ">		
+			<div class="card " style="position: relative;">
+				<div class="card-body px-0 pb-0">
+					<div class="row pb-3">
+						<div class="col-md-7">
+							<h3 class="card-title text-muted pl-3 counter-count" th:text="${numberOfActiveNotification}"></h3>
+					        <p class="card-text text-muted pl-3" th:text="#{dashboard.notification}"></p>
+						</div>
+						<div class="col-md-5 text-center">
+							<i id="card-icon" class="fas fa-bell fa-3x text-muted align-middle"></i>
+						</div>
+					</div>
+<!-- NOTIFICATION MODAL TRIGGER -->		
+					<a id="notificationModalTrigger" class="btn bg-md-grey text-white btn-block py-2" data-toggle="modal" data-target="#notificationModal" th:text="#{label.more}"></a>
+<!-- NOTIFICATION MODAL TRIGGER -->		
+			    </div>				      
+			</div>
+		</div>
+<!-- THIRD CARD -->			
+	</div>
+<!-- FIRST ROW -->
+<!-- SECOND ROW -->
+	<div class="row ">
+<!-- TODO LIST -->
+		<div class="col-md-6 mt-4">
+			<div class="card">
+			<h5 class="my-3 ml-3 font-weight-bold text-muted" th:text="#{label.tasks}"></h5><hr class="my-0">
+			<a th:href="@{/administrator-panel/tasks}">
+				<div class="card-body second-row-height" >				
+					<table id="dashboard-tasks-list-table" class="table table-sm table-striped table-hover mh-100">
+					<!-- * * * * * TABLE CONTENT* * * * * * -->	
+					</table>			
+				</div>
+				<span class="btn bg-md-grey btn-block py-2" th:text="#{label.more}"></span>
+			</a>	
+			</div>
+		</div>
+<!-- TODO LIST -->
+<!-- STATS -->
+<div class="col-md-6 my-4">
+			<div class="card">
+			<div class="row">
+				<div class="col-md-6 text-center">
+					<h5 class="my-3 font-weight-bold text-muted" th:text="#{label.statistics}"></h5>
+				</div>
+				<div class="col-md-6 pr-5">
+					<select class="form-control my-2"  id="dashboardStatistickSelect">
+				    	<option value="today" th:text="#{label.today}"></option>
+				    	<option value="yesterday" th:text="#{label.yesterday}"></option>
+				    	<option value="week" th:text="#{label.last.7days}"></option>
+				    	<option value="month" th:text="#{label.last.30days}"></option>
+				    	<option value="ever" th:text="#{label.since.ever}"></option>
+				    </select>
+				</div>
+			</div>
+			<hr class="my-0">
+				<div class="card-body second-row-height">
+					<div id="statistic-table" class="text-muted">
+						<!--  statistic table -->
+					</div>								
+				</div>
+				<a th:href="@{/administrator-panel/statistics}" class="btn bg-md-grey btn-block py-2" th:text="#{label.more}"></a>				
+			</div>
+		</div>
+<!-- STATS -->				
+	</div>
+<!-- SECOND ROW -->
+</div>
+</main>
+<!-- FOOTER -->
+<footer th:replace="parts/footer"></footer>
+<!-- FOOTER -->
+<!-- SCRIPTS -->
+<div th:replace="parts/scripts"></div>
+<!-- MORE SCRIPTS -->  
+<script type="text/javascript" th:src="@{/js/dashboard.js}"></script>
+</body>
+</html>

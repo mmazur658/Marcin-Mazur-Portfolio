@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
+
+<head> <!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+
+	<link th:replace="parts/header"></link> 
+	<title th:text="#{loginpage.title}"></title>  
+
+</head> <!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+
+<body>
+<!-- ADD CLASS 'fade-out' TO BODY TO GET SMOOTH PAGE LOADING EFFECT -->
+<script>document.body.className += ' fade-out';</script>
+<main class="bg-l-grey" style="min-height: 100%;">
+<!-- LOGIN FORM -->
+	<div class="container pt-5 " style="max-width: 600px;">	
+		<form th:action="@{/authenticateTheUser}" class="border border-light p-5 shadow bg-grey" method="POST">		
+			<p class="h4 mb-4 text-center text-white" th:text="#{loginpage.heading}"></p>		
+			<div th:if="${param.error != null }" class="alert alert-danger text-center" role="alert">
+				<p class="my-2" th:text="#{loginpage.message.error}"></p>
+			</div>
+			<div th:if="${param.logout != null }" class="alert alert-success text-center" role="alert">
+				<p class="my-2" th:text="#{loginpage.message.success}"></p>
+			</div>					    
+    		<input name="username" type="text" id="textInput" class="form-control mb-2 shadow-sm" placeholder="Login">    	
+   			<input name="password" type="password" id="passwdInput" class="form-control mb-4 shadow-sm" placeholder="Hasło">    		
+    		<button class="btn bg-d-grey btn-block my-2" type="submit" th:text="#{button.login}"></button>
+    		<a class="btn bg-d-grey btn-block mb-4" th:href="@{/}" th:text="#{label.back.to.main}"></a>		   		
+		</form>	
+	</div>
+<!-- LOGIN FORM -->	
+</main>
+<!-- FOOTER -->
+<footer th:replace="parts/footer"></footer>
+<!-- FOOTER -->
+<!-- SCRIPTS -->
+<div th:replace="parts/scripts"></div>  
+</body>
+</html>

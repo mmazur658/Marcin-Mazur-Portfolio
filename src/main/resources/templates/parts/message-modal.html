@@ -1,0 +1,150 @@
+<!-- CONTACT FORM MESSAGE MODAL -->
+<!-- MESSAGE HEADER: NAME, EMAIL, DATE, SUBJECT -->
+<div class="row">
+	<div class="col-md-2 text-md-grey py-1 mx-3 border-bottom pl-2" th:text="#{label.sender}"></div>
+	<div class="col-md-9 text-md-grey py-1 ml-2 border-bottom" th:text="${contactFormMessage.senderName}"></div>
+</div>
+				      		
+<div class="row">
+	<div class="col-md-2 text-md-grey py-1 mx-3 border-bottom pl-2" th:text="#{label.email}"></div>		
+	<div class="col-md-9 text-md-grey py-1 ml-2 border-bottom" th:text="${contactFormMessage.senderEmail}"></div>
+</div>
+				      		
+<div class="row">
+	<div class="col-md-2 text-md-grey py-1 mx-3 border-bottom pl-2" th:text="#{label.date}"></div>
+	<div class="col-md-9 text-md-grey py-1 ml-2 border-bottom" th:text="${contactFormMessage.date}"></div>
+</div>
+				      		
+<div class="row">
+	<div class="col-md-2 text-md-grey py-1 mx-3 border-bottom pl-2" th:text="#{label.subject}"></div>
+	<div class="col-md-9 text-md-grey py-1 ml-2 border-bottom" th:text="${contactFormMessage.messageSubject}"></div>
+</div>
+<!-- MESSAGE HEADER: NAME, EMAIL, DATE, SUBJECT -->
+ <!-- MESSAGE MODAL NAVIGATION BUTTONS --> 			
+<div class="row">
+	<div class="col-md-6 align-left text-left" style="height: 0px;">
+		<button id="previousBtn" class="left-angle-button bg-transparent border-0 p-4"><i class="fas fa-angle-left fa-10x text-white"></i></button>
+	</div>
+	
+	<div class="col-md-6 align-right text-right" style="height: 0px;">
+		<button id="nextBtn" class="right-angle-button bg-transparent border-0 p-4"><i class="fas fa-angle-right fa-10x text-white"></i></button>
+	</div>
+</div>	
+<!-- MESSAGE MODAL NAVIGATION BUTTONS --> 		      		
+<!-- MESSAGE TEXT -->     
+<div class="row">
+	<div class="col-md-12 mt-3 pr-4">
+		<div class="container border p-3 text-justify text-md-grey" style="min-height: 250px;">
+			<span th:text="${contactFormMessage.messageText}"></span>
+		</div>
+	</div>
+</div>
+<!-- MESSAGE TEXT --> 
+<!-- MESSAGE ACTION BUTTONS -->   				      		
+<div class="row mt-3 bg-grey mx-1">
+	<div class="col-md-4 bg-grey">
+		<button id="deleteMessageBtn" type="button" class="btn bg-d-grey btn-table-spec shadow">
+			<i class="fas fa-trash-alt"></i>
+		</button>
+									
+		<button id="readStatusBtn" type="button" class="btn bg-d-grey btn-table-spec shadow">
+			<i class="fas fa-check"></i>
+		</button>
+									
+		<button id="repliedStatusButton" type="button" class="btn bg-d-grey btn-table-spec shadow">
+			<i class="fas fa-reply"></i>
+		</button>
+	</div>
+<!-- MESSAGE ACTION BUTTONS -->   
+<!-- COMMENTS ACTION BUTTONS -->   	
+	<div class="col-md-3 text-center bg-grey">	
+		<button id="addCommentButton" type="button" class="btn bg-d-grey btn-table-spec shadow">
+			<i class="fas fa-plus"></i>
+		</button>
+									
+		<button id="deleteCommentButton" type="button" class="btn bg-d-grey btn-table-spec shadow">
+			<i class="fas fa-minus"></i>
+		</button>
+	</div>
+<!-- COMMENTS ACTION BUTTONS --> 
+<!-- SEND EMAIL AND CLOSE BUTTON -->
+	<div class="col-md-1 bg-grey"></div>
+	<div class="col-md-2 bg-grey">
+		<a target="_blank" href="mailto:${contactFormMessage.senderEmail}" id="sendEmailButton" class="mt-1 btn btn-block bg-d-grey btn-table-spec text-white" th:text="#{label.email}"></a>
+	</div>
+
+	<div class="col-md-2 pr-4 bg-grey">									
+		<button id="closeMessageModalBtn" class="mt-1 btn btn-block bg-d-grey btn-table-spec text-white" th:text="#{button.close}"></button>
+	</div>
+<!-- SEND EMAIL AND CLOSE BUTTON -->
+</div>
+<!-- ADD COMMENT SECTION -->
+<div id="addCommentDiv" class="container bg-l-grey px-2 py-2 mt-2">
+	<form id="addCommentForm" action="admin-action/add-comment">
+		<div class="row mx-0 pt-3">
+<!-- ADD/CANCEL COMMENT BUTTONS -->
+			<div class="col-md-2 mx-0 px-0">
+				<div class="row">
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-block bg-d-grey text-white">
+							<i class="fas fa-check fa-2x"></i>
+						</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<a id="cancelCommentBtn" class="btn btn-block bg-d-grey text-white">
+							<i class="fas fa-times fa-2x"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+<!-- ADD/CANCEL COMMENT BUTTONS -->
+<!-- COMMENT TEXT -->			
+			<div class="col-md-10 mx-0 px-0">
+				<div class="form-group">
+				  <textarea class="form-control" rows="4" id="commentText"></textarea>
+				</div>
+			</div>
+<!-- COMMENT TEXT -->			
+		</div>
+	</form>
+</div>
+<!-- ADD COMMENT SECTION -->
+<!-- COMMENTS SECTION -->				      						      		
+<div class="container bg-white mx-0 px-0 mt-2" style="overflow: hidden; overflow-y: scroll; max-height: 250px;">		      		
+	<table id="message-table" class="table table-sm table-striped table-hover pr-2" >
+<!-- COMMENTS TABLE HEADER-->		
+		<thead>
+			<tr>
+				<th width="7%" scope="col" class="text-center">#</th>
+				<th width="13%"scope="col" th:text="#{label.date}"></th>
+				<th width="80%" scope="col" th:text="#{label.comment}"></th>
+				<th style="display: none;"> 
+			</tr>
+		</thead>
+<!-- COMMENTS TABLE HEADER-->	
+<!-- COMMENTS TABLE BODY-->	
+		<tbody>	
+		  <tr th:each="tempComment : ${commentsList}" id="table-row" class="text-muted" th:data-id="${tempComment.id}">
+		  	<td scope="row" class="text-center">      
+				<div class="pretty p-default p-smooth px-0 mr-0">
+					<input name="table-message-chbox" type="checkbox" value="${tempComment.id}" /> 
+					<div class="state p-danger mr-0 px-0">
+						<label></label>
+					</div>
+				</div>
+			</td>			
+			<td th:text="${#dates.format(tempComment.date, 'yyyy-MM-dd HH:mm:ss')}"></td>						
+			<td class="text-justify" th:text="${tempComment.commentText}"></td>
+
+		</tr>		
+	</tbody>
+<!-- COMMENTS TABLE BODY-->	
+	</table>			      		
+</div>
+<!-- COMMENTS SECTION -->	
+<!-- SCRIPTS IMPORT -->
+<script type="text/javascript" th:src="@{/js/message-modal.js}"></script>
+<!-- SCRIPTS IMPORT -->
+<!-- CONTACT FORM MESSAGE MODAL -->

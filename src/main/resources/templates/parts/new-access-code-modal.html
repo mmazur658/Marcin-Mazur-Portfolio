@@ -1,0 +1,44 @@
+<div class="container" id="new-access-code-container">
+<!-- NEW ACCESS CODE FORM -->
+<form method="post" id="newAccessCodeForm" action="access-code/create-new-access-code">	
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.code}"></span>			
+			</div>		
+			<div class="col-md-6" id="accessCodeDiv">
+				<input type="text" id="newAccessCodeValue" class="form-control" disabled>
+			</div>	
+			<div class="col-md-2">
+				<a id="generateNewValue" class="btn btn-block bg-d-grey text-white"><i class="fas fa-dice"></i></a>				
+			</div>	
+		</div>
+		<hr>
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.owner}"></span>			
+			</div>		
+			<div class="col-md-8">
+				<input type="text" id="newAccessCodeOwner" class="form-control">
+			</div>	
+		</div>
+		<hr>
+		<div class="row mx-1">
+			<div class="col-md-12">
+				<div class="form-group">
+					<textarea class="form-control p-3 m-0" rows="4" id="newAccessCodeDescription" ></textarea>
+				</div>
+			</div>
+		</div>		
+		<div class="row my-3">
+			<div class="col-md-6">
+				<button type="submit" id="confirmEditBtn" class="btn btn-block bg-d-grey text-white"><i class="fas fa-check"></i></button>
+			</div>
+			<div class="col-md-6">
+				<a id="cancelEditBtn" data-dismiss="modal" class="btn btn-block bg-d-grey text-white"><i class="fas fa-times"></i></a>
+			</div>			
+		</div>
+	</form>
+<!-- NEW ACCESS CODE FORM -->
+</div>
+<!-- SCRIPTS -->
+<script type="text/javascript" th:src="@{/js/new-access-code-modal.js}"></script>

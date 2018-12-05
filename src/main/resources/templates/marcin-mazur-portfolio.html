@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
+
+<head><!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+
+  <link th:replace="parts/header"></link>
+  <title>Marcin Mazur Portfolio - Java Web Application - Marcin Mazur Portfolio </title>
+  <link rel="stylesheet" th:href="@{/css/baguetteBox.min.css}">
+  <link rel="stylesheet" th:href="@{/css/gallery-grid.css}"> 
+ 
+</head><!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+
+<body class="bg-l-grey">
+<!-- ADD CLASS 'fade-out' TO BODY TO GET SMOOTH PAGE LOADING EFFECT -->
+<script>document.body.className += ' fade-out';</script>
+<header style="height: auto;">
+<!-- NAVBAR -->
+	<nav th:replace="parts/subnavbar"></nav>
+<!-- NAVBAR -->
+</header>
+<!--  PROJECT HEADING -->
+	<div class="container pt-4 px-4" style="min-height: 100%">
+		<h1 class="project-heading">Marcin Mazur Portfolio</h1>		
+		<span class="modified-info" th:text="#{label.author}"></span>
+		<br>
+		<span class="modified-info mb-5" th:text="#{label.last.modification}"></span>
+		<hr>
+<!--  PROJECT HEADING -->
+<!--  PROJECT DESCRIPTION -->
+		<h2 class="section-heading my-5" th:text="#{label.project.description}"></h2>
+		<p class="text-justify" th:text="#{marcin.mazur.portfolio.project.desc.1}"></p>
+			<br>  
+		<p class="text-justify" th:text="#{marcin.mazur.portfolio.project.desc.2}"></p>
+<!--  PROJECT DESCRIPTION -->
+<!--  PROJECT FEATURES -->		
+		<h2 class="section-heading my-5" th:text="#{label.main.features}"></h2>		
+		<ul class="text-justify">
+			<li th:text="#{marcin.mazur.portfolio.features.1}"></li>
+			<li th:text="#{marcin.mazur.portfolio.features.2}"></li>
+			<li th:text="#{marcin.mazur.portfolio.features.3}"></li>
+			<li th:text="#{marcin.mazur.portfolio.features.4}"></li>
+			<li th:text="#{marcin.mazur.portfolio.features.5}"></li>
+			<li th:text="#{marcin.mazur.portfolio.features.6}"></li>
+			<li th:text="#{marcin.mazur.portfolio.features.7}"></li>
+			<li th:text="#{marcin.mazur.portfolio.features.8}"></li>
+			<li th:text="#{marcin.mazur.portfolio.features.9}"></li>
+		</ul>
+<!--  PROJECT FEATURES -->
+<!--  PROJECT DETAILS -->			
+		<h2 class="section-heading my-5" th:text="#{label.project.details}"></h2>
+		<span th:text="#{label.project.details.heading}"></span>
+		<ul class="mt-2" style="columns: 3">
+			<li>Eclipse</li>
+			<li>Java</li>
+			<li>Maven</li>
+			<li>GIT</li>
+			<li>MySQL</li>
+			<li>Spring Boot</li>
+			<li>Spring Security</li>
+			<li>Spring AOP</li>
+			<li>Spring MVC</li>
+			<li>JUnit</li>
+			<li>Thymeleaf</li>			
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JavaScript</li>
+			<li>JQuery</li>
+			<li>Bootstrap</li>
+			<li>MD Bootstrap</li>
+		</ul>
+		<span class="mt-2" th:text="#{label.source.code}"></span><a href="">Marcin Mazur Portfolio</a>
+<!--  PROJECT DETAILS -->	
+<!--  PROJECT GALLERY -->			
+		<h2 class="section-heading my-5" th:text="#{label.project.gallery}"></h2>		
+	    <div class="tz-gallery">	
+	        <div class="row">
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_01_main_page_start.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_01_main_page_start.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_02_main_page_career.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_02_main_page_career.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_03_main_page_projects.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_03_main_page_projects.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_04_main_page_contact_form.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_04_main_page_contact_form.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_05_main_page_footer.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_05_main_page_footer.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_06_administrator_panel_dashboard.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_06_administrator_panel_dashboard.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_07_administrator_panel_notification.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_07_administrator_panel_notification.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_08_administrator_panel_contact_form_messages.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_08_administrator_panel_contact_form_messages.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_09_administrator_panel_message.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_09_administrator_panel_message.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_10_administrator_panel_search_form.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_10_administrator_panel_search_form.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_11_administrator_panel_tasks.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_11_administrator_panel_tasks.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_12_administrator_panel_task_details.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_12_administrator_panel_task_details.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_13_administrator_panel_add_new_task_modal.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_13_administrator_panel_add_new_task_modal.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_14_administrator_panel_access_codes.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_14_administrator_panel_access_codes.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_15_administrator_panel_generate_new_access_code.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_15_administrator_panel_generate_new_access_code.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_16_administrator_panel_access_code_details.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_16_administrator_panel_access_code_details.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_17_administrator_panel_statistics.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_17_administrator_panel_statistics.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_18_administrator_panel_statistic_chart.png}">
+	                    <img th:src="@{/img/projects/portfolio/Marcin_Mazur_Portfolio_18_administrator_panel_statistic_chart.png}" alt="">
+	                </a>
+	            </div>
+<!--  PROJECT GALLERY -->	            	            	            
+	        </div>
+	    </div>	    
+	</div>
+<!-- FOOTER -->
+<footer th:replace="parts/footer"></footer>
+<!-- FOOTER -->
+<!-- SCRIPTS -->
+<div th:replace="parts/scripts"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
+</body>
+</html>

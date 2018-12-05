@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
+
+<head> <!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+
+	<link th:replace="parts/header"></link>
+	<title th:text="#{contact.form.messages.title}"></title>  
+
+</head> <!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+<body class="bg-l-grey">
+<!-- ADD CLASS 'fade-out' TO BODY TO GET SMOOTH PAGE LOADING EFFECT -->
+<script>document.body.className += ' fade-out';</script>
+<!-- NAVBAR & INTRO -->
+	<nav th:replace="parts/adminnav"></nav>
+<!-- NAVBAR & INTRO -->
+<main style="min-height: 100%; margin-top: 150px;">
+<div class="container bg-white"> 
+<!-- TABLE HEADER WITH ACTION BUTTONS -->
+		<div id="table-header" class="row mx-3 shadow">
+<!-- DELETE - OPEN - CHANGE STATUS - REPLY -->			
+			<div class="col-md-3 bg-grey pt-2">		
+				<button id="deleteBtn" type="button" class="btn bg-d-grey btn-table-spec">
+					<i class="fas fa-trash-alt"></i>
+				</button>		
+				<button id="openBtn" type="button" class="btn bg-d-grey btn-table-spec" data-toggle="modal" data-target="">
+					<i class="fas fa-book-open"></i>
+				</button>				
+				<button id="readBtn" type="button" class="btn bg-d-grey btn-table-spec">
+					<i class="fas fa-check"></i>
+				</button>				
+				<button id="changeReplyStatusBtn" type="button" class="btn bg-d-grey btn-table-spec">
+					<i class="fas fa-reply"></i>
+				</button>
+			</div>
+<!-- DELETE - OPEN - CHANGE STATUS - REPLY -->				
+<!-- NEWS - ARCHiVE - ALL -->
+			<div class="col-md-6 bg-grey text-center pt-2">
+				<div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
+				  <label class="btn btn-r-custom bg-d-grey active px-0">
+				    <input type="radio" name="options" autocomplete="off" value="new" checked ><span th:text="#{label.new}"></span>
+				  </label>
+				  <label class="btn btn-r-custom bg-d-grey px-0">
+				    <input type="radio" name="options" autocomplete="off" value="archive"> <span th:text="#{label.archive}"></span>
+				  </label>
+				  <label class="btn btn-r-custom bg-d-grey px-0">
+				    <input type="radio" name="options" autocomplete="off" value="all"> <span th:text="#{label.all}"></span>
+				  </label>
+				</div>
+			</div>
+<!-- NEWS - ARCHiVE - ALL -->		
+<!-- SEARCH MODAL -->			
+			<div class="col-md-3 bg-grey">	
+<!-- MODAL TRIGGER -->		
+				<button type="button" class="btn btn-block bg-d-grey btn-table-spec mt-3 mb-3" data-toggle="modal" data-target="#searchContactFormMessageBtn">
+				 <span><spring:message code="btn.search"/></span>  <i class="fa fa-search mx-3"></i><span class="badge badge-light ml-2" id="setParams">0</span> 	
+				</button>	
+<!-- MODAL TRIGGER -->				
+<!-- MODAL CONTENT -->
+				<div class="modal fade " id="searchContactFormMessageBtn" tabindex="-1" role="dialog" aria-labelledby="#searchContactFormMessageTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered" role="document">
+				    <div class="modal-content bg-l-grey">
+				      <div class="modal-header bg-grey">
+					        <h6 class="modal-title text-white font-weight-bold" id="searchContactFormMesageTitle" th:text="#{contact.form.messages.search.form}"></h6>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+				      </div>				      
+				      <div class="modal-body bg-blue mt--5 mb--5" >
+					       <form id="searchForm" class="" action="">	
+								<div class="md-form">
+									<input id="searchFormName" class="form-control text-md-grey font-weight-bold" type="text" name="" value = "">
+									<label class="text-md-grey" for="searchFormName" th:text="#{label.name}"></label>
+								</div>
+								<div class="md-form">
+									<input id="searchFormEmail" class="form-control text-md-grey font-weight-bold" type="text" name="" value = "">	
+						 			<label class="text-md-grey" for="searchFormEmail" th:text="#{label.email}"></label>	
+								</div>
+								<div class="md-form">
+									<input id="searchFormSubject" class="form-control text-md-grey font-weight-bold" type="text" name="" value = "">
+									<label class="text-md-grey" for="searchFormSubject" th:text="#{label.subject}"></label>
+								</div>
+								<div class="row">
+									<div class="col-md-6 text-center">
+										<div class="md-form">
+											<input class="datepicker-here text-center text-muted font-weight-bold" id="searchFormStartDate" th:placeholder="#{label.start}" type='text' data-position="top right" data-language='pl'/>
+										</div>
+									</div>
+									<div class="col-md-6 text-center">
+										<div class="md-form">
+											<input class="datepicker-here text-center text-muted font-weight-bold" id="searchFormEndDate" type='text' th:placeholder="#{label.end}" data-position="top right" data-language='pl'/>
+										</div>
+									</div>
+								</div>						
+								<div class="row">
+									<div class="col-md-6 text-center">										
+										<button type="submit" id="submitBtn" class="btn btn-block bg-d-grey shadow text-white" th:text="#{button.search}"></button>		
+									</div>
+									<div class="col-md-6 text-center">									
+										<a id="clearSearchParametersBtn" class="btn btn-block bg-d-grey shadow text-white" th:text="#{button.clear}"></a>
+									</div>
+								</div>
+							</form>
+						 </div>		     
+				    </div>
+				  </div>
+				</div>
+<!-- MODAL CONTENT -->
+			</div>
+<!-- SEARCH MODAL -->	
+		</div>	
+<!-- TABLE HEADER WITH ACTION BUTTONS -->
+<!-- MESSAGES TABLE -->
+	<table id="message-list-table" class="table table-sm table-striped table-hover mh-100">		      
+	<!-- * * * MESSAGES TABLE CONTENT * *  -->			      		
+	</table>
+<!-- MESSAGES TABLE -->
+	<input type="hidden" id="resultStartRange" value="">
+<!-- PAGINATION -->
+			<nav aria-label="Page navigation example">	
+				<ul class="pagination justify-content-end ">
+					<li class="page-item mb-2"><button id="less-btn" class="btn btn-sm bg-grey page-link text-muted font-weight bold p-1 mt-1" > <<< </button></li>
+					<li class="page-item mb-2"><h6 class="text-muted font-weight-bold px-3 mt-1" id="result-label" ></h6></li>
+					<li class="page-item mb-2"><button id="more-btn" class="btn btn-sm bg-grey page-link text-muted font-weight bold p-1 mt-1"> >>> </button></li>
+				</ul>
+			</nav>
+<!-- PAGINATION -->
+<!-- MESSAGE MODAL -->
+				<div class="modal fade" id="contactFormMessageModal" tabindex="-1" role="dialog" aria-labelledby="#contactFormMessageModalTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header bg-grey">
+					        <h6 class="modal-title text-white font-weight-bold" id="contactFormMessageModalTitle" th:text="#{contact.form.messages.modal.title}"></h6>
+					        <button id="close-modal-button" type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+				      </div>
+				      
+				      <div id="modal-body-contect" class="modal-body bg-l-grey mt--5 mb--5">    
+				      	<div id="contact-form-message-modal">			      			      		      
+							<!-- * * * * * MODAL CONTENT * * * * * -->				      		
+						</div>
+					 </div>		     
+				 </div>
+			</div>
+		</div>			
+<!-- MESSAGE MODAL -->
+</div>
+</main>
+<!-- FOOTER -->
+<footer th:replace="parts/footer"></footer>
+<!-- FOOTER -->
+<!-- SCRIPTS -->
+<div th:replace="parts/scripts"></div>
+<!-- MORE SCRIPTS -->  
+<script type="text/javascript" th:src="@{/js/contact-form-messages.js}"></script>
+</body>
+</html>

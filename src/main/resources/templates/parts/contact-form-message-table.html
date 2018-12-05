@@ -1,0 +1,57 @@
+<!-- CONTACT FORM MESSAGES TABLE --> 
+<!-- HIDDEN INPUT FOR TOTAL RESULT VALUE -->
+<input type="hidden" id="totalResults" th:value="${totalResults}">
+<!-- HIDDEN INPUT FOR TOTAL RESULT VALUE -->
+ <!-- TABLE HEADER -->
+   <thead>
+    <tr>
+      <th width="5%" scope="col" class="text-center">#</th>
+      <th width="11%"scope="col" th:text="#{label.date}"></th>
+      <th width="18%" scope="col" th:text="#{label.sender}"></th>
+      <th width="24%" scope="col" th:text="#{label.email}"></th>
+      <th width="34%"scope="col" th:text="#{label.subject}"></th>
+      <th width="8%"scope="col" th:text="#{lable.answer}"></th>
+      <th style="display: none;">
+      <th style="display: none;">      
+    </tr>
+  </thead>
+<!-- TABLE HEADER -->  
+<!-- TABLE BODY -->
+  <tbody>
+     <tr th:each="tempMessage : ${contactFormMessageList}" id="table-row" class="text-muted" th:data-id="${tempMessage.id}">
+     	<td scope="row" class="text-center">      
+			<div class="pretty p-default p-smooth px-0 mr-0">
+				<input name="table-chbox" type="checkbox" th:value="${tempMessage.id}" /> 
+				   <div class="state p-primary mr-0 px-0">
+				   		<label></label>
+				   </div>
+				 </div>
+		    </td>   		    
+		    <div th:switch="${tempMessage.isReaded}">
+		    	<div th:case="${false}">
+		    		<td class="font-weight-bold" th:text="${#dates.format(tempMessage.date, 'yyyy-MM-dd HH:mm:ss')}"></td>
+				    <td class="font-weight-bold" th:text="${tempMessage.senderName}"></td>
+				    <td class="font-weight-bold" th:text="${tempMessage.senderEmail}"></td>
+				    <td class="font-weight-bold" th:text="${tempMessage.messageSubject}"></td>	    	
+		    	</div>
+		    	<div th:case="${true}">
+		    		<td th:text="${#dates.format(tempMessage.date, 'yyyy-MM-dd HH:mm:ss')}"></td>
+			    	<td th:text="${tempMessage.senderName}"></td>
+			    	<td th:text="${tempMessage.senderEmail}"></td>
+			    	<td th:text="${tempMessage.messageSubject}"></td>	    	
+		    	</div>
+			</div>			
+			<div th:switch="${tempMessage.isReplied}">
+		    	<div th:case="${false}">
+   					<td><i class="far fa-square"></i></td>
+		    	</div>
+		    	<div th:case="${true}">
+   					<td><i class="far fa-check-square"></i></td>
+		    	</div>
+			</div>
+			<td style="display: none;" th:text="${tempMessage.isReaded}"></td>
+		  	<td style="display: none;" th:text="${tempMessage.isReplied}"></td>   
+    </tr> 
+</tbody>
+<!-- TABLE BODY -->
+<!-- CONTACT FORM MESSAGES TABLE --> 

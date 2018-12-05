@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
+
+<head><!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+
+	<link th:replace="parts/header"></link>
+	<title th:text="#{statistics.title}"></title>  
+
+</head><!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+
+<body class="bg-l-grey">
+<!-- ADD CLASS 'fade-out' TO BODY TO GET SMOOTH PAGE LOADING EFFECT -->
+<script>document.body.className += ' fade-out';</script>
+<!-- NAVBAR & INTRO -->
+<nav th:replace="parts/adminnav"></nav>
+<!-- NAVBAR & INTRO -->
+<!-- SECTION HEADING -->
+<main class="mt-5 pt-5" style="min-height: 100%">
+	<div class="container bg-white mt-3 mb-5">
+		<div class="row mx-3 shadow div-header">
+			<div class="col-md-12 bg-d-grey pt-2 text-center">
+				<h2 class="text-white font-weight-bold" th:text="#{label.statistics}"></h2>
+			</div>
+		</div>
+<!-- SECTION HEADING -->	
+<!--  SECTION PILLS -->
+		<div class="row px-4 pb-5">
+			<div class="nav flex-column nav-pills col-md-2 text-white" id="v-pills-tab" role="tablist" aria-orientation="vertical">  	
+			  	<a class="nav-link active" id="v-pills-projects-tab" data-toggle="pill" data-target="#v-pills-projects" role="tab" aria-controls="v-pills-projects" aria-selected="true" th:text="#{statistics.pill.label.1}"></a>
+				<a class="nav-link text-muted" id="v-pills-messages-tab" data-toggle="pill" data-target="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false" th:text="#{statistics.pill.label.2}"></a>			
+			</div>
+			<div class="tab-content col-md-10 br-left" id="v-pills-tabContent">
+<!--  SECTION PILLS -->	
+<!-- SECTION PROJECTS -->	  
+				 <div class="tab-pane fade show active " id="v-pills-projects" role="tabpanel" aria-labelledby="v-pills-projects-tab">
+				 	<div class="container text-muted">				 	
+						<select class="form-control my-2" id="projectStatisticSelect">
+					    	<option value="Simple ABC Library" selected>Simple ABC Library</option>
+					    	<option value="Web Calculator">Web Calculator</option>
+					    	<option value="Marcin Mazur Portfolio">Marcin Mazur Portfolio</option>
+					    </select>					 	
+						<hr>
+						<h5 th:text="#{statistics.projects.heading}"></h5>
+						<hr>
+						<div class="row">
+							<div class="col-md-6">
+								<p th:text="#{label.today}"></p>
+							</div>
+							<div class="col-md-4">
+								<span id="projectToday"></span>
+							</div>
+						</div>	
+						<div class="row">
+							<div class="col-md-6">
+								<p th:text="#{label.yesterday}"></p>
+							</div>
+							<div class="col-md-4">
+								<span id="projectYesterday"></span>
+							</div>
+						</div>	
+						<div class="row">
+							<div class="col-md-6">
+								<p th:text="#{label.last.7days}"></p>
+							</div>
+							<div class="col-md-4">
+								<span id="project7Days"></span>
+							</div>
+						</div>								
+						<div class="row">
+							<div class="col-md-6">
+								<p th:text="#{label.last.30days}"></p>
+							</div>
+							<div class="col-md-4">
+								<span id="project30Days"></span>
+							</div>
+						</div>								
+						<div class="row">
+							<div class="col-md-6">
+								<p th:text="#{label.since.ever}"></p>
+							</div>
+							<div class="col-md-4">
+								<span id="projectEver"></span>
+							</div>
+						</div>								
+						<hr class="my-0 py-0">
+						<div class="row ">
+							<div class="col-md-7">
+								<h5 class="pt-4" th:text="#{statistics.monthly.chart}"></h5>
+							</div>
+							<div class="col-md-5">
+								<div class="md-form my-3">
+									<input type="text" id="inputMonth" class="datepicker-here" data-language='pl' data-min-view="months" data-view="months" data-date-format="MM yyyy" value=""/>
+									<button id="getMonthlyChart" type="button" class="btn bg-d-grey btn-table-spec my-0">
+										<i class="fas fa-arrow-right"></i>
+									</button>
+								</div>								
+							</div>								
+						</div>
+						<hr class="my-0 py-0">
+						<div class="row px-4 pt-0 mt-0">		
+							<canvas id="monthlyChart" height="120"></canvas>
+						</div>			
+					 </div>
+				 </div>
+<!-- SECTION PROJECTS -->
+<!-- SECTION MESSAGES -->	  
+				 <div class="tab-pane fade " id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+				 	<div class="container text-muted">					 
+						<h4 th:text="#{statistics.pill.label.2}"></h4>					 	
+					 	<hr>					 	
+					 	<h5 th:text="#{statistics.received.messages}"></h5>
+					 	<hr>					
+						<div class="row">
+							<div class="col-md-6">
+								<p th:text="#{label.today}"></p>
+							</div>
+							<div class="col-md-4">
+								<span id="messagesToday"></span>
+							</div>
+						</div>	
+						<div class="row">
+							<div class="col-md-6">
+								<p th:text="#{label.yesterday}"></p>
+							</div>
+							<div class="col-md-4">
+								<span id="messagesYesterday"></span>
+							</div>
+						</div>	
+						<div class="row">
+							<div class="col-md-6">
+								<p th:text="#{label.last.7days}"></p>
+							</div>
+							<div class="col-md-4">
+								<span id="messages7Days"></span>
+							</div>
+						</div>								
+						<div class="row">
+							<div class="col-md-6">
+								<p th:text="#{label.last.30days}"></p>
+							</div>
+							<div class="col-md-4">
+								<span id="messages30Days"></span>
+							</div>
+						</div>								
+						<div class="row">
+							<div class="col-md-6">
+								<p th:text="#{label.since.ever}"></p>
+							</div>
+							<div class="col-md-4">
+								<span id="messagesEver"></span>
+							</div>
+						</div>								
+						<hr class="my-0 py-0">
+						<div class="row ">
+							<div class="col-md-5">
+								<h5 class="pt-4" th:text="#{statistics.monthly.chart}"></h5>
+							</div>
+							<div class="col-sm-7">
+								<div class="md-form my-3">
+									<input type="text" id="messageInputMonth" class="datepicker-here" data-language='pl' data-min-view="months" data-view="months" data-date-format="MM yyyy" value=""/>
+									<button id="getMessageMonthlyChart" type="button" class="btn bg-d-grey btn-table-spec my-0">
+										<i class="fas fa-arrow-right"></i>
+									</button>
+								</div>								
+							</div>								
+						</div>
+						<hr class="my-0 py-0">
+						<div class="row px-4 pt-0 mt-0">		
+							<canvas id="messageMonthlyChart" height="120"></canvas>
+						</div>					
+				 	</div>
+				 </div>
+<!-- SECTION MESSAGES -->		    
+			</div>
+		</div>
+	</div>
+</main>
+<!-- FOOTER -->
+<footer th:replace="parts/footer"></footer>
+<!-- FOOTER -->
+<!-- SCRIPTS -->
+<div th:replace="parts/scripts"></div>
+<!-- MORE SCRIPTS -->  
+<script type="text/javascript" th:src="@{/js/statistics.js}"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- STATISTIC TABLE -->
+<!-- PROJECTS STATISTICS -->
+<h5 class="mb-1" th:text="#{label.projects}"></h5>
+<hr class="mt-0 mb-1">
+<div class="row" th:each="projectVisitingHistoryResult : ${projectVisitingHistoryResultList}">
+	<div class="col-sm-9">
+		<span th:text="${projectVisitingHistoryResult.projectName}"></span>
+	</div>
+	<div class="col-sm-3">
+		<span th:text="${projectVisitingHistoryResult.sumOfVisits}"></span>
+	</div>	
+</div>
+<!-- PROJECTS STATISTICS -->
+<!-- MESSAGES STATISTICS -->
+<h5 class="mt-3 mb-1" th:text="#{label.messages}"></h5>
+<hr class="mt-0 mb-1">
+<div class="row" >
+	<div class="col-sm-9">
+		<span th:text="#{statistics.received.messages}"></span>
+	</div>
+	<div class="col-sm-3">
+		<span th:text="${sumOfContactFormMessages}"></span>
+	</div>	
+</div>
+<!-- MESSAGES STATISTICS -->
+<!-- ACCESS CODES STATISTICS -->
+<h5 class="mt-3 mb-1" th:text="#{label.codes}"></h5>
+<hr class="mt-0 mb-1">
+<div class="row" th:each="codeUsageHistoryResult : ${codeUsageHistoryResultList}">
+	<div class="col-sm-3">
+		<span th:text="${codeUsageHistoryResult.accessCodeValue}"></span>
+	</div>
+	<div class="col-sm-6">
+		<span th:text="${codeUsageHistoryResult.accessCodeOwner}"></span>
+	</div>	
+	<div class="col-sm-3">
+		<span th:text="${codeUsageHistoryResult.sumOfUsing}"></span>
+	</div>	
+</div>
+<!-- ACCESS CODES STATISTICS -->
+<!-- STATISTIC TABLE -->
+
+

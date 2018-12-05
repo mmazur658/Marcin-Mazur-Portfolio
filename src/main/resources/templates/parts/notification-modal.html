@@ -1,0 +1,37 @@
+<!-- NOTIFICATION MODAL TABLE -->
+<table id="" class="table table-sm table-hover mh-100">
+	<thead>
+		<tr>
+			<th width="14%" scope="col" th:text="#{label.date}"></th>
+			<th width="81%" scope="col" th:text="#{label.notification}"></th>
+			<th width="5%" scope="col" class="text-center">#</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="notification : ${notificationList}">						
+			<div th:switch="${notification.notificationType}">
+				<div th:case="error">
+					<td class="font-weight-bold alert alert-danger" th:text="${#dates.format(notification.dateOfAdded, 'yyyy-MM-dd HH:mm:ss')}"></td>
+					<td class="font-weight-bold alert alert-danger" th:text="${notification.notificationText}"></td>
+					<td><button class="deleteNotificationButton btn m-0 bg-grey" th:value="${notification.id}"><i class="fas fa-trash-alt"></i></button></td>
+				</div>
+				<div th:case="success">
+					<td class="font-weight-bold alert alert-success" th:text="${#dates.format(notification.dateOfAdded, 'yyyy-MM-dd HH:mm:ss')}"></td>
+					<td class="font-weight-bold alert alert-success" th:text="${notification.notificationText}"></td>	
+					<td><button class="deleteNotificationButton btn m-0 bg-grey" th:value="${notification.id}"><i class="fas fa-trash-alt"></i></button></td>								
+				</div>
+				<div th:case="information">
+					<td class="font-weight-bold alert alert-secondary" th:text="${#dates.format(notification.dateOfAdded, 'yyyy-MM-dd HH:mm:ss')}"></td>
+					<td class="font-weight-bold alert alert-secondary" th:text="${notification.notificationText}"></td>	
+					<td><button class="deleteNotificationButton btn m-0 bg-grey" th:value="${notification.id}"><i class="fas fa-trash-alt"></i></button></td>							
+				</div>
+				<div th:case="raport">
+					<td class="font-weight-bold alert alert-primary" th:text="${#dates.format(notification.dateOfAdded, 'yyyy-MM-dd HH:mm:ss')}"></td>
+					<td class="font-weight-bold alert alert-primary" th:text="${notification.notificationText}"></td>
+					<td><button class="deleteNotificationButton btn m-0 bg-grey" th:value="${notification.id}"><i class="fas fa-trash-alt"></i></button></td>								
+				</div>							
+			</div>						
+		</tr>
+	</tbody>
+</table>   					  
+<!-- NOTIFICATION MODAL TABLE -->				      

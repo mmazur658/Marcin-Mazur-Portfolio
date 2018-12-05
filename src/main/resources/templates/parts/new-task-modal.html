@@ -1,0 +1,60 @@
+<div class="container" id="new-task-container">
+<!-- NEW TASK FORM -->
+<form method="post" id="newTaskForm" action="task-actions/add-new-task">	
+		<div class="row mx-1">
+			<div class="col-md-3">
+				<span class="font-weight-bold" th:text="#{label.name}"></span>			
+			</div>		
+			<div class="col-md-9">
+				<input type="text" id="newTaskName" class="form-control">
+			</div>	
+		</div>
+		<hr>
+		<div class="row mx-1">
+			<div class="col-md-3">
+				<span class="font-weight-bold" th:text="#{label.category}"></span>			
+			</div>		
+			<div class="col-md-9">
+				<select class="form-control" id="newTaskSelect">
+					<option value="Simple ABC Library">Simple ABC Library</option>
+					<option value="Web Calculator">Web Calculator</option>
+					<option value="Marcin Mazur Portfolio">Marcin Mazur Portfolio</option>
+					<option value="Others" selected>Other</option>
+					<option value="Career">Career</option>					
+				 </select>
+			</div>	
+		</div>
+		<hr>
+		<div class="row mx-1">
+			<div class="col-md-3">
+				<span class="font-weight-bold" th:text="#{label.deadline}"></span>
+			</div>		
+			<div class="col-md-9">
+				<input class="datepicker-here form-control" data-timepicker="true" data-time-format='hh:ii' id="newTaskDeadline" type='text' data-position="top right" data-language='pl' />
+			</div>	
+		</div>
+		<hr>			
+		<div class="row mx-1">
+			<div class="col-md-12">
+				<div class="form-group">
+					<textarea class="form-control p-3 m-0" rows="4" id="newTaskDescription" ></textarea>
+				</div>
+			</div>
+		</div>		
+		<div class="row my-3">
+			<div class="col-md-6">
+				<button type="submit" id="confirmEditBtn" class="btn btn-block bg-d-grey text-white"><i class="fas fa-check"></i></button>
+			</div>
+			<div class="col-md-6">
+				<a id="cancelEditBtn" data-dismiss="modal" class="btn btn-block bg-d-grey text-white"><i class="fas fa-times"></i></a>
+			</div>			
+		</div>
+	</form>
+<!-- NEW ACCESS CODE FORM -->
+</div>
+<!-- SCRIPTS & DATEPICKER -->
+<link th:href="@{/css/datepicker.min.css}" rel="stylesheet" type="text/css">
+<script type="text/javascript" th:src="@{/js/datepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/i18n/datepicker.en.js}"></script>
+<script type="text/javascript" th:src="@{/js/i18n/datepicker.pl.js}"></script>
+<script type="text/javascript" th:src="@{/js/new-task-modal.js}"></script>

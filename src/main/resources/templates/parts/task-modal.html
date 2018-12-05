@@ -1,0 +1,176 @@
+<div class="container" id="task-container">
+<!-- SECTION 1 - SHOW DATA -->
+	<div id="showTaskDataSection">
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.id}"></span>			
+			</div>		
+			<div class="col-md-8">
+				<span th:text="${task.id}"></span>
+			</div>	
+		</div>
+		<hr>	
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.name}"></span>			
+			</div>		
+			<div class="col-md-8">
+				<span th:text="${task.taskName}"></span>
+			</div>	
+		</div>
+		<hr>
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.category}"></span>			
+			</div>		
+			<div class="col-md-8">
+				<span th:text="${task.taskCategory}"></span>
+			</div>	
+		</div>
+		<hr>
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.date.of.added}"></span>			
+			</div>		
+			<div class="col-md-8">
+				<span th:text="${#dates.format(task.dateOfAdded, 'yyyy-MM-dd HH:mm')}"></span>
+			</div>	
+		</div>
+		<hr>
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.end.date}"></span>			
+			</div>		
+			<div class="col-md-8">
+				<span th:text="${#dates.format(task.deadline, 'yyyy-MM-dd HH:mm')}"></span>
+			</div>	
+		</div>
+		<hr>
+		<div class="row mx-1">
+			<div class="col-md-4">
+				<span class="font-weight-bold" th:text="#{label.status}"></span>			
+			</div>		
+			<div class="col-md-2">
+			    <span class="badge badge-success" th:if="${task.isActive}" th:text="#{label.active.1}"></span>
+    			<span class="badge badge-light" th:unless="${task.isActive}" th:text="#{label.inactive.1}"></span>
+			</div>	
+			<div class="col-md-2">
+			    <span class="badge badge-success" th:if="${task.isCompleted}" th:text="#{label.done}"></span>
+    			<span class="badge badge-danger" th:unless="${task.isCompleted}" th:text="#{label.undone}"></span>
+			</div>	
+		</div>
+		<hr>
+		<h6 class="ml-4 font-weight-bold" th:text="#{label.description}"></h6>
+		<div class="row border mx-1">			
+			<div class="col-md-12 mx-1">
+				<p style="height: 150px; overflow: auto;" class="text-justify pl-1 pr-3 py-3" th:text="${task.taskDescription}"></p>
+			</div>
+		</div>
+		<div class="row my-3">
+			<div class="col-md-6">
+				<button id="editTaskModalBtn" class="btn btn-block bg-d-grey text-white" th:text="#{button.edit}"></button>
+			</div>			
+			<div class="col-md-6">
+				<button id="closeTaskModalBtn" class="btn btn-block bg-d-grey text-white" data-dismiss="modal" th:text="#{button.close}"></button>
+			</div>			
+		</div>
+	</div>
+<!-- SECTION 1 - SHOW DATA -->
+<!-- SECTION 2 - EDIT DATA -->
+	<div id="editTaskDataSection">
+		<form method="post" id="editTaskForm" action="task-actions/update-task-details">
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.id}"></span>			
+				</div>		
+				<div class="col-md-8">
+					<input id="taskIdHolder" th:value="${task.id}"type="text" disabled class="form-control" >
+				</div>	
+			</div>
+			<hr>	
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.name}"></span>		
+				</div>		
+				<div class="col-md-8">
+					<input type="text" id="taskNameInputForm" class="form-control" th:value="${task.taskName}">
+				</div>	
+			</div>
+			<hr>
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.category}"></span>			
+				</div>		
+				<div class="col-md-8">
+					<input type="text" id="taskCategoryInputForm" class="form-control" th:value="${task.taskCategory}">
+				</div>	
+			</div>
+			<hr>
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.date.of.added}"></span>
+				</div>		
+				<div class="col-md-8">	
+					<input class="datepicker-here form-control" data-timepicker="true" data-time-format='hh:ii' id="taskDateOfAddedInputForm" type='text' data-position="top right" data-language='pl' th:value="${#dates.format(task.dateOfAdded, 'yyyy-MM-dd HH:mm')}"/>		
+				</div>
+			</div>
+			<hr>
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.end.date}"></span>
+				</div>		
+				<div class="col-md-8">	
+					<input class="datepicker-here form-control" data-timepicker="true" data-time-format='hh:ii' id="taskDeadlineInputForm" type='text' data-position="top right" data-language='pl' th:value="${#dates.format(task.deadline, 'yyyy-MM-dd HH:mm')}"/>		
+				</div>
+			</div>
+			<hr>
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.status}"></span>			
+				</div>		
+				<div class="col-md-8">					
+					<label class="custom-task-switch">					
+					  <input type="checkbox" id="taskIsActiveInputForm" class="" th:checked="${task.isActive}" >
+					  <span class="slider round"></span>
+					</label>		
+				</div>	
+			</div>
+			<hr class="mt-0">	
+			<div class="row mx-1">
+				<div class="col-md-4">
+					<span class="font-weight-bold" th:text="#{label.task.status}"></span>			
+				</div>		
+				<div class="col-md-8">					
+					<label class="custom-task-switch">					
+					  <input type="checkbox" id="taskIsCompletedInputForm" class="" th:checked="${task.isCompleted}" >
+					  <span class="slider round"></span>
+					</label>		
+				</div>	
+			</div>
+			<hr class="mt-0">	
+			<h6 class="ml-4 font-weight-bold" th:text="#{label.description}"></h6>		
+			<div class="row mx-1">
+				<div class="col-md-12">
+					<div class="form-group">
+						<textarea class="form-control p-3 m-0" rows="4" id="taskDescription" th:text="${task.taskDescription}"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="row my-3">
+				<div class="col-md-6">
+					<button type="submit" id="confirmTaskEditBtn" class="btn btn-block bg-d-grey text-white"><i class="fas fa-check"></i></button>
+				</div>
+				<div class="col-md-6">
+					<a id="cancelTaskEditBtn" class="btn btn-block bg-d-grey text-white"><i class="fas fa-times"></i></a>
+				</div>			
+			</div>
+		</form>
+	</div>
+<!-- SECTION 2 - EDIT DATA -->
+</div>
+<!-- DATEPICKER -->
+<link th:href="@{/css/datepicker.min.css}" rel="stylesheet" type="text/css">
+<script type="text/javascript" th:src="@{/js/datepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/i18n/datepicker.en.js}"></script>
+<script type="text/javascript" th:src="@{/js/i18n/datepicker.pl.js}"></script>
+<script type="text/javascript" th:src="@{/js/i18n/task-modal.js}"></script>

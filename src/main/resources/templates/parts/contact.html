@@ -1,0 +1,65 @@
+<!-- CONTACT HEADING -->
+<h2 class="h1-responsive font-weight-bold text-center mb-5 wow fadeIn" data-wow-delay="0.3s" th:text="#{contact.form.title}"></h2>
+<!-- CONTACT HEADING -->
+<!-- CONTACT DESCRIPTION -->
+<p class="text-center w-responsive mx-auto mb-5 wow fadeIn" data-wow-delay="0.3s" th:text="#{contact.form.description}"></p>
+<!-- CONTACT DESCRIPTION -->
+<!-- CONTACT FORM -->
+<div class="row">
+	<div class="col-md-9 mb-md-0 mb-5 wow fadeInLeft" data-wow-delay="0.6s">
+		<form id="contact-form" method="POST" action="/contact-form-message/sent-message">
+        	<div class="row">
+	            <div class="col-md-6">
+	                <div class="md-form mb-0">
+		            	<input type="text" id="contact-name" class="form-control">
+		                <label for="contact-name" th:text="#{contact.form.messages.your.name}"></label>
+	                </div>
+	            </div>
+	            <div class="col-md-6">
+	                 <div class="md-form mb-0">
+		                 <input type="text" id="contact-email" class="form-control">
+		                 <label for="contact-email" th:text="#{contact.form.messages.your.email}"></label>
+	                 </div>
+	            </div>
+            </div>                
+            <div class="row">
+	            <div class="col-md-12">
+	        		<div class="md-form mb-0">
+						<input type="text" id="contact-subject" class="form-control">
+						<label for="contact-subject" th:text="#{label.subject}"></label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="md-form">
+						<textarea type="text" id="contact-message" class="form-control md-textarea" rows="3"></textarea>
+						<label for="contact-message" th:text="#{contact.form.messages.your.message}"></label>
+					</div>
+				</div>
+			</div>                
+			<div class="text-center text-md-left wow fadeInUp" data-wow-delay="1.0s">
+				<button type="submit" class="btn btn-dark btn-md" th:text="#{button.send}"></button>
+			</div>	            
+		</form>
+	</div>
+<!-- CONTACT DETAILS -->
+	<div class="col-md-3 text-center">
+		<ul class="list-unstyled mb-0">
+			<li class="wow fadeInRight" data-wow-delay="0.8s">
+				<i class="fa fa-map-marker fa-3x dark-text"></i>
+				<p th:text="#{label.location}"></p>
+			</li>
+			<li class="wow fadeInRight" data-wow-delay="0.8s">
+				<i class="fa fa-phone fa-3x mt-4 dark-text"></i>
+				<p>+48 690 372 851</p>
+			</li>
+			<li class="wow fadeInRight" data-wow-delay="0.8s">
+				<i class="fa fa-envelope fa-3x mt-4 dark-text"></i>
+				<p class="mb-0">marcin.mazur1024@gmail.com</p>
+			</li>
+		</ul>
+	</div>
+<!-- CONTACT DETAILS -->		
+</div>
+<!-- CONTACT FORM -->   

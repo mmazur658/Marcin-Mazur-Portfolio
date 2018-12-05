@@ -1,0 +1,88 @@
+<footer class="page-footer font-small pt-4">
+	    <div class="container">
+<!-- SOCIAL BUTTONS  -->	    
+	      <ul class="list-unstyled list-inline text-center">
+	        <li class="list-inline-item wow fadeInLeftBig" data-wow-delay="0.5s">
+	          <a href="https://www.facebook.com/marcin.mazur.1024.2" class="btn-floating btn-fb mx-1">
+	            <i class="fab fa-facebook-f fa-4x pr-4 "> </i>
+	          </a>
+	        </li>
+	        <li class="list-inline-item wow fadeInLeftBig" data-wow-delay="0.3s">
+		      	<a href="https://www.linkedin.com/in/marcin-mazur-1024/" class="btn-floating btn-linkedin mx-1">
+	                <i class="fab fa-linkedin-in fa-4x pr-4"> </i>
+	            </a>
+	        </li>
+	        <li class="list-inline-item wow fadeInLeftBig" data-wow-delay="0.1s">
+	          <a href="https://github.com/mmazur658" class="btn-floating btn-github mx-1">
+	            <i class="fab fa-github fa-4x"> </i>
+	          </a>
+	        </li>
+	      </ul>
+<!-- SOCIAL BUTTONS  -->	
+	  </div>
+<!-- COPYRIGHT FOOTER -->
+<!-- FOOTER TRIGGER -->	
+	<a data-toggle="modal" data-target="#footerModal"> 
+		<div class="footer-copyright py-2 text-center bg-blue" >© 2018 Copyright: Marcin Mazur</div>
+	</a>
+<!-- FOOTER TRIGGER -->		
+
+<!-- FOOTER MODAL -->
+<div class="modal fade right" id="footerModal" tabindex="-1" role="dialog" aria-labelledby="footerModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-side modal-bottom-right" role="document">
+		<div class="modal-content bg-grey">
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<img class="mb-1 shadow" th:src="@{/img/mazur.png}" height="156px" width="156px" style="border-radius: 50%;"></img>
+						<h4>Marcin Mazur</h4>
+					</div>
+				</div>
+				<div class="row my-1">
+					<div class="col-md-12">					
+						<h6 class="text-justify mb-0" th:text="#{footer.description}"></h6>
+						<br> 
+						<ul style="columns: 2;">
+							<li><a href="https://www.eclipse.org/" target="_blank">Eclipse</a></li>	
+							<li><a href="https://www.java.com" target="_blank">Java</a></li>
+							<li><a href="https://maven.apache.org/" target="_blank">Maven</a></li>
+							<li><a href="https://git-scm.com/" target="_blank">GIT</a></li>
+							<li><a href="https://www.mysql.com/" target="_blank">MySQL</a></li>
+							<li><a href="https://spring.io/" target="_blank">Spring Framework</a></li>
+							<li><a href="https://spring.io/projects/spring-boot" target="_blank">Spring Boot</a></li>
+							<li><a href="https://spring.io/projects/spring-security" target="_blank">Spring Security</a></li>
+							<li><a href="https://docs.spring.io/spring/docs/2.5.x/reference/aop.html" target="_blank">Spring AOP</a></li>
+							<li><a href="https://junit.org/junit5/" target="_blank">JUnit</a></li>					
+							<li><a href="https://www.thymeleaf.org/" target="_blank">Thymeleaf</a></li>
+							<li><a href="" target="_blank">HTML</a></li>
+							<li><a href="" target="_blank">CSS</a></li>	
+							<li><a href="" target="_blank">JavaScript</a></li>	
+							<li><a href="https://jquery.com/" target="_blank">JQuery</a></li>	
+							<li><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a></li>	
+							<li><a href="https://mdbootstrap.com/" target="_blank">MD Bootstrap</a></li>	
+							<li><a href="https://fontawesome.com/" target="_blank">Font Awesome</a></li>	
+							<li><a href="http://t1m0n.name/air-datepicker/docs/" target="_blank">Air DatePicker</a></li>	
+							<li><a href="https://lokesh-coder.github.io/pretty-checkbox/" target="_blank">Pretty Checkbox</a></li>	
+							<li><a href="http://faviconit.com/" target="_blank">Faviconit</a></li>		
+							<li><a href="http://cookiealert.sruu.pl/" target="_blank">Cookie Alert</a></li>												
+						</ul>						
+					</div>
+				</div>			
+				<div class="row my-1">
+					<div class="col-md-12">
+						<p style="font-size: 12px;" th:text="#{footer.cookie.info}"></p>
+					</div>			
+				</div>			 			     
+				<div class="row my-2">
+					<div class="col-md-12">
+						<button type="button" class="btn btn-block bg-d-grey" data-dismiss="modal" th:text="#{button.close}"></button>
+					</div>
+				</div>
+			</div>  	        
+		</div>
+	</div>
+</div>
+<!-- FOOTER MODAL -->
+</footer>
+<!-- COPYRIGHT FOOTER--> 
+<!-- FOOTER -->

@@ -1,0 +1,44 @@
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #E3E3E3; border-radius: 0px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 40px; padding: 0; line-height: 40px;
+    font-size: 14px; color: white;  font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "NOWE";
+    padding-left: 10px;
+    background-color: #F99D33; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "ARCHIWUM";
+    padding-right: 10px;
+    background-color: #F99D33; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 50px; margin: -0.5px;
+    background: #E04B26;
+    position: absolute; top: 0; bottom: 0;
+    right: 147px;
+    border: 2px solid #E3E3E3; border-radius: 0px;
+    transition: all 0.3s ease-in 0s; 
+    height: 44px;
+    margin-top: 8px;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+    background-color: #E04B26; 
+}

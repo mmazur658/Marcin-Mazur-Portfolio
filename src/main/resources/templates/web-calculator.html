@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
+
+<head><!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+
+  <link th:replace="parts/header"></link>
+  <title>Web Calculator -Java Web Application - Marcin Mazur Portfolio</title>
+  <link rel="stylesheet" th:href="@{/css/baguetteBox.min.css}">
+  <link rel="stylesheet" th:href="@{/css/gallery-grid.css}">
+ 
+</head><!-- HEADER WITH IMPORTS, TITLE, STYLE -->
+
+<body class="bg-l-grey">
+<!-- ADD CLASS 'fade-out' TO BODY TO GET SMOOTH PAGE LOADING EFFECT -->
+<script>document.body.className += ' fade-out';</script>
+<header style="height: auto;">
+<!-- NAVBAR -->
+	<nav th:replace="parts/subnavbar"></nav>
+<!-- NAVBAR -->
+</header>
+<!--  PROJECT HEADING -->
+	<div class="container pt-4 px-4" style="min-height: 100%">
+		<h1 class="project-heading">Web Calculator</h1>		
+		<span class="modified-info" th:text="#{label.author}"></span>
+		<br>
+		<span class="modified-info mb-5" th:text="#{label.last.modification}"></span>
+		<hr>
+<!--  PROJECT HEADING -->
+<!--  PROJECT DESCRIPTION -->
+		<h2 class="section-heading my-5" th:text="#{label.project.description}"></h2>
+		<p class="text-justify" th:text="#{web.calculator.project.desc.1}"></p>
+
+		<p class="text-justify" th:text="#{web.calculator.project.desc.2}"></p>
+	
+		<p class="text-justify" th:text="#{web.calculator.project.desc.3}"></p>
+
+<!--  PROJECT DESCRIPTION -->
+<!--  PROJECT FEATURES -->	
+		<h2 class="section-heading my-5" th:text="#{label.main.features}"></h2>		
+		<ul class="text-justify">
+			<li th:text="#{web.calculator.features.1}"></li>
+			<li th:text="#{web.calculator.features.2}"></li>
+			<li th:text="#{web.calculator.features.3}"></li>
+			<li th:text="#{web.calculator.features.4}"></li>
+			<li th:text="#{web.calculator.features.5}"></li>
+			<li th:text="#{web.calculator.features.6}"></li>
+			<li th:text="#{web.calculator.features.7}"></li>
+			<li th:text="#{web.calculator.features.8}"></li>	
+		</ul>
+<!--  PROJECT FEATURES -->
+<!--  PROJECT DETAILS -->		
+		<h2 class="section-heading my-5" th:text="#{label.project.details}"></h2>
+		<span th:text="#{label.project.details.heading}"></span>
+		<ul class="mt-3" style="columns: 3">
+			<li>Eclipse</li>
+			<li>Java</li>
+			<li>Maven</li>
+			<li>GIT</li>
+			<li>MySQL</li>
+			<li>Spring Boot</li>
+			<li>Spring Security</li>
+			<li>Spring AOP</li>
+			<li>Spring MVC</li>
+			<li>JUnit</li>
+			<li>JSP</li>			
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JavaScript</li>
+			<li>JQuery</li>
+			<li>Bootstrap</li>
+			<li>MD Bootstrap</li>
+		</ul>
+		<span class="mt-2" th:text="#{label.source.code}"></span><a href="https://github.com/mmazur658/Web-Calculator">Web Calculator</a>
+<!--  PROJECT DETAILS -->	
+<!--  PROJECT GALLERY -->	
+		<h2 class="section-heading my-5" th:text="#{label.project.gallery}"></h2>		
+		<div class="tz-gallery">	
+	        <div class="row">
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_01_main_page.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_01_main_page.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_02_basic_calculator.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_02_basic_calculator.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_03_advanced_calculator.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_03_advanced_calculator.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_04_science_calculator.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_04_science_calculator.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_05_category.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_05_category.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_06_contact_form.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_06_contact_form.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_07_percentage_calculator.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_07_percentage_calculator.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_08_trigonometry_calculator.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_08_trigonometry_calculator.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_09_converter_calculator.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_09_converter_calculator.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_09_currency_calculator.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_09_currency_calculator.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_10_triangle_calculator.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_10_triangle_calculator.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_11_square_calculator.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_11_square_calculator.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_12_dashboard.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_12_dashboard.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_13_messages_module.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_13_messages_module.png}" alt="">
+	                </a>
+	            </div>
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_14_search_form.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_14_search_form.png}" alt="">
+	                </a>
+	            </div>            
+	            <div class="col-sm-6 col-md-4">
+	                <a class="lightbox" th:href="@{/img/projects/calculator/web_calculator_15_message.png}">
+	                    <img th:src="@{/img/projects/calculator/web_calculator_15_message.png}" alt="">
+	                </a>
+	            </div>   	            
+	        </div>
+		</div>
+<!--  PROJECT GALLERY -->			
+		
+	</div>
+
+<!-- FOOTER -->
+<footer th:replace="parts/footer"></footer>
+<!-- FOOTER -->
+<!-- SCRIPTS -->
+<div th:replace="parts/scripts"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
+</body>
+</html>

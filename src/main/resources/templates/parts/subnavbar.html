@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-d-grey fixed-top">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#subNavBar" aria-controls="subNavBar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="subNavBar">
+<!-- NAVIAGTION LINKS -->
+	<ul class="navbar-nav mr-auto smooth-scroll">
+	    <li class="nav-item">
+	        <a class="nav-link" th:href="@{/#intro}" th:text="#{nav.start}"></a>
+	    </li>
+	    <li class="nav-item">
+	        <a class="nav-link" th:href="@{/#about-me}" th:text="#{nav.about.me}"></a>
+	    </li>
+	    <li class="nav-item">
+	        <a class="nav-link" th:href="@{/#careerSection}" th:text="#{nav.career}"></a>
+	    </li>
+	    <li class="nav-item">
+	        <a class="nav-link" th:href="@{/#projects}" th:text="#{nav.projects}"></a>
+	    </li>
+	    <li class="nav-item">
+	        <a class="nav-link" th:href="@{/#contact}" th:text="#{nav.contact}"></a>
+	    </li>
+	</ul>
+<!-- NAVIAGTION LINKS -->
+<!-- SOCIAL MEDIA LINKS -->
+	<ul class="navbar-nav nav-flex-icons">
+	    <li class="nav-item">
+	        <a href="https://www.facebook.com/marcin.mazur.1024.2" class="nav-link"><i class="fab fa-facebook-f"></i></a>
+	    </li>
+	    <li class="nav-item">
+	        <a href="https://www.linkedin.com/in/marcin-mazur-1024/" class="nav-link"><i class="fab fa-linkedin-in"></i></a>
+	    </li>
+	    <li class="nav-item">
+	        <a href="https://github.com/mmazur658" class="nav-link"><i class="fab fa-github"></i></a>
+	    </li>  
+	    <li class="nav-item mt-2 mx-2">
+			<a th:href="@{/?lang=en_us}">
+	    		<img class="mb-3" style="opacity: 0.7;" th:src="@{/img/united-kingdom-flag.png}" alt="United Kingdom Flag" >
+	    	</a>
+		</li>
+		<li class="nav-item mt-2 mr-2">
+			<a th:href="@{/?lang=pl_pl}">
+	    		<img class="mb-3" style="opacity: 0.7;" th:src="@{/img/poland-flag.png}" alt="Poland Flag" >
+	    	</a>
+		</li>	  
+	</ul>
+<!-- SOCIAL MEDIA LINKS -->        
+	</div>
+</nav>

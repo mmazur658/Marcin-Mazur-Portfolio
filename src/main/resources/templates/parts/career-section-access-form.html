@@ -1,0 +1,10 @@
+<!-- ACCESS CAREER SECTION FORM-->
+<div class="alert alert-danger" role="alert">
+	<h6 class="font-weight-bold mt-4 text-center" th:text="#{career.message}"></h6>
+	<form method="POST" action="access-code/access-code-validation" id="accessCodeForm" class="mx-3 mt-3 mb-4"> 
+		<input class="form-control form-control-lg" type="text" id="accessCodeValue" th:placeholder="#{career.placeholder}"/>
+	</form>					
+</div>
+<img th:src="@{/img/resume_section_access_denied.png}" class="img-fluid" alt="">
+<script type="text/javascript" th:src="@{/js/access-career-section-form.js}"></script>	
+<!-- ACCESS CAREER SECTION FORM-->
