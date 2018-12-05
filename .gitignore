@@ -20,6 +20,7 @@ target/
 *.dll
 *.exe
 *.o
+*.pdf
 *.so
 *.7z
 *.dmg

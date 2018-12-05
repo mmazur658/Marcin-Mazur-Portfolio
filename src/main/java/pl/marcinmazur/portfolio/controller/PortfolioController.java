@@ -59,10 +59,26 @@ public class PortfolioController {
 		return "marcin-mazur-portfolio";
 	}
 
-	@RequestMapping("/download-resume")
-	public ResponseEntity<InputStreamResource> downloadResume(Locale locale) throws FileNotFoundException {
+	@RequestMapping("/download-resume-pl")
+	public ResponseEntity<InputStreamResource> downloadResumePl(Locale locale) throws FileNotFoundException {
 
-		URL url = ClassLoader.class.getResource("/files/Mazur_Marcin_CV.pdf");
+		URL url = ClassLoader.class.getResource("/files/Mazur_Marcin_CV_PL.pdf");
+		File resume = new File(url.getPath());
+
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.setContentType(MediaType.APPLICATION_PDF);
+		responseHeaders.setContentLength(resume.length());
+		responseHeaders.setContentDispositionFormData("attachment", resume.getName());
+
+		InputStreamResource isr = new InputStreamResource(new FileInputStream(resume));
+		return new ResponseEntity<InputStreamResource>(isr, responseHeaders, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping("/download-resume-en")
+	public ResponseEntity<InputStreamResource> downloadResumeEn(Locale locale) throws FileNotFoundException {
+
+		URL url = ClassLoader.class.getResource("/files/Mazur_Marcin_CV_EN.pdf");
 		File resume = new File(url.getPath());
 
 		HttpHeaders responseHeaders = new HttpHeaders();
