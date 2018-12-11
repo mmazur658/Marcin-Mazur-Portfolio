@@ -46,7 +46,7 @@ public class ContactFormMessageDaoImpl implements ContactFormMessageDao {
 	@Override
 	public long getNumberOfUnreadContactFormMessages() {
 
-		String hql = "SELECT COUNT(*) from ContactFormMessage where isActive = true";
+		String hql = "SELECT COUNT(*) from ContactFormMessage where isReaded = false";
 		Query<Long> theQuery = (Query<Long>) entityManager.createQuery(hql);
 
 		return (Long) theQuery.uniqueResult();

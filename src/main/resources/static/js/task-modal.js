@@ -1,7 +1,7 @@
 //* * * hide edit section on page loading * * * 
 $('#editTaskDataSection').hide();
 
-//* * * change secton on button click * * * 
+//* * * change section on button click * * * 
 $('#editTaskModalBtn').on('click', function(){	
 	$('#task-container').fadeOut('600', function() {	
 		$('#showTaskDataSection').hide();
@@ -20,7 +20,7 @@ $('#editTaskForm').submit(function(event){
 	// prevent form form default action
     event.preventDefault();   
     
-    // get form url
+    // get form URL
   	var $form = $( this ),
     url = $form.attr( 'action' );
   	  	
@@ -86,7 +86,7 @@ $('#editTaskForm').submit(function(event){
     	
 });
 // * * * FUNCTIONS * * * 
-// * * * Show toastr alert depending on the langauge  * * * 
+// * * * Show toastr alert depending on the language  * * * 
 function showCustomAlert(type, titlePL, textPL, titleEN, textEN){
 	
 	var userLang = document.documentElement.lang;
@@ -97,7 +97,7 @@ function showCustomAlert(type, titlePL, textPL, titleEN, textEN){
     	showToastrAlert(type, textEN , titleEN);
 }
 
-//* * * show task data secttion * * * 
+//* * * show task data section * * * 
 function showTaskDataSection(){
 	$('#task-container').fadeOut('600', function() {	
 		$('#editTaskDataSection').hide();

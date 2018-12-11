@@ -42,7 +42,7 @@ public class ContactFormMessage {
 	private String senderName;
 
 	/**
-	 * The email od the sender 
+	 * The email of the sender 
 	 */
 	@Column(name = "sender_email")
 	private String senderEmail;

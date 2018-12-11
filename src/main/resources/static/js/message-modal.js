@@ -162,6 +162,8 @@ $("#deleteCommentButton").on('click', function(){
 		$('input[name="table-message-chbox"]:checked').each(function() {
 			commentsIds.push($(this).val());
 		});
+		
+	
 
 		if(commentsIds.length > 0) {
 			

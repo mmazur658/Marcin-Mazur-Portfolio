@@ -9,7 +9,7 @@ $("#notificationModalIconTrigger").off().on('click', function(event){
 
 // * * * delete notification on button click and reload list * * * 
 $('.deleteNotificationButton').on('click', function(){
-	
+
 	// delete notification
 	$.post("/administrator-panel/notifications/delete-notification",{ notificationId: $(this).val(), _csrf: csrf_token }, function(data, status){
 		
