@@ -11,11 +11,27 @@ import org.springframework.stereotype.Repository;
 import pl.marcinmazur.portfolio.entity.Comment;
 import pl.marcinmazur.portfolio.entity.ContactFormMessage;
 
+/**
+ * Repository class for performing database operations on ContactFormMessage and
+ * Comment objects.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Repository
 public class ContactFormMessageDaoImpl implements ContactFormMessageDao {
 
+	/**
+	 * The EntityManager interface
+	 */
 	private EntityManager entityManager;
 
+	/**
+	 * Constructs a ContactFormMessageDaoImpl with the EntityManager
+	 * 
+	 * @param entityManager
+	 *            The EntityManager
+	 */
 	@Autowired
 	public ContactFormMessageDaoImpl(EntityManager entityManager) {
 		this.entityManager = entityManager;
@@ -38,7 +54,8 @@ public class ContactFormMessageDaoImpl implements ContactFormMessageDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ContactFormMessage> getListOfContactFormMessages(String hql, Integer resultStartRange, Integer resultRange) {
+	public List<ContactFormMessage> getListOfContactFormMessages(String hql, Integer resultStartRange,
+			Integer resultRange) {
 
 		Query<ContactFormMessage> theQuery = (Query<ContactFormMessage>) entityManager.createQuery(hql);
 		theQuery.setFirstResult(resultStartRange);
@@ -51,14 +68,6 @@ public class ContactFormMessageDaoImpl implements ContactFormMessageDao {
 	@Override
 	public long getNumberOfContactFormMessagesForGivenListTpe(String hql) {
 
-		Query<Long> theQuery = (Query<Long>) entityManager.createQuery(hql);
-		return (Long) theQuery.uniqueResult();
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public long getNumberOfContactFormMessageSearchResult(String hql) {
-		
 		Query<Long> theQuery = (Query<Long>) entityManager.createQuery(hql);
 		return (Long) theQuery.uniqueResult();
 	}
@@ -134,7 +143,7 @@ public class ContactFormMessageDaoImpl implements ContactFormMessageDao {
 
 		return (Long) theQuery.uniqueResult();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object[]> getMonthlyMessagesData(String startDate, String endDate) {

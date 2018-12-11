@@ -8,12 +8,33 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.marcinmazur.portfolio.dao.UserDao;
 import pl.marcinmazur.portfolio.entity.User;
 
+/**
+ * Service class for managing administrator`s password
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Service
 public class AdminServiceImpl implements AdminService {
 
+	/**
+	 * The PasswordEncoder interface
+	 */
 	private PasswordEncoder passwordEncoder;
+
+	/**
+	 * The UserDao interface
+	 */
 	private UserDao userDao;
 
+	/**
+	 * Constructs a AdminServiceImpl with the PasswordEncoder and UserDao.
+	 * 
+	 * @param passwordEncoder
+	 *            The PasswordEncoder interface
+	 * @param userDao
+	 *            The UserDao interface
+	 */
 	@Autowired
 	public AdminServiceImpl(PasswordEncoder passwordEncoder, UserDao userDao) {
 		this.passwordEncoder = passwordEncoder;

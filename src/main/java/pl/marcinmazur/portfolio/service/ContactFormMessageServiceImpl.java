@@ -11,13 +11,41 @@ import pl.marcinmazur.portfolio.entity.ContactFormMessage;
 import pl.marcinmazur.portfolio.utils.SearchEngineUtils;
 import pl.marcinmazur.portfolio.utils.ServiceUtils;
 
+/**
+ * Service class for managing contact form messages.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Service
 public class ContactFormMessageServiceImpl implements ContactFormMessageService {
 
+	/**
+	 * The ContactFormMessageDao interface
+	 */
 	private ContactFormMessageDao contactFormMessageDao;
+
+	/**
+	 * The SearchEngineUtils interface
+	 */
 	private SearchEngineUtils searchEngineUtils;
+
+	/**
+	 * The ServiceUtils interface
+	 */
 	private ServiceUtils serviceUtils;
 
+	/**
+	 * Constructs a ContactFormMessageServiceImpl with the ContactFormMessageDao,
+	 * SearchEngineUtils and ServiceUtils.
+	 * 
+	 * @param contactFormMessageDao
+	 *            The ContactFormMessageDao interface
+	 * @param searchEngineUtils
+	 *            The SearchEngineUtils interface
+	 * @param serviceUtils
+	 *            The ServiceUtils interface
+	 */
 	@Autowired
 	public ContactFormMessageServiceImpl(ContactFormMessageDao contactFormMessageDao,
 			SearchEngineUtils searchEngineUtils, ServiceUtils serviceUtils) {
@@ -52,16 +80,6 @@ public class ContactFormMessageServiceImpl implements ContactFormMessageService 
 
 	@Override
 	@Transactional
-	public Long getTotalAmountOfContactFormMessagesList(String listType) {
-
-		String hqlType = "SELECT COUNT(*) from ContactFormMessage ";
-		String hql = serviceUtils.prepareHqlDependsOnListType(hqlType, listType);
-
-		return contactFormMessageDao.getNumberOfContactFormMessagesForGivenListTpe(hql);
-	}
-
-	@Override
-	@Transactional
 	public void deleteContactFormMessage(long contactFormMessageId) {
 
 		ContactFormMessage contactFormMessage = contactFormMessageDao.getContactFormMessage(contactFormMessageId);
@@ -71,18 +89,18 @@ public class ContactFormMessageServiceImpl implements ContactFormMessageService 
 
 	@Override
 	@Transactional
-	public void changeContactFormMessageReadStatus(long selectedCheckboxValue) {
+	public void changeContactFormMessageIsReadStatus(long contactFormMessageId) {
 
-		ContactFormMessage contactFormMessage = contactFormMessageDao.getContactFormMessage(selectedCheckboxValue);
+		ContactFormMessage contactFormMessage = contactFormMessageDao.getContactFormMessage(contactFormMessageId);
 		serviceUtils.changeIsReadedStatus(contactFormMessage);
 
 	}
 
 	@Override
 	@Transactional
-	public void changeContactFormMessageRepliedStatus(long selectedCheckboxValue) {
+	public void changeContactFormMessageRepliedStatus(long contactFormMessageId) {
 
-		ContactFormMessage contactFormMessage = contactFormMessageDao.getContactFormMessage(selectedCheckboxValue);
+		ContactFormMessage contactFormMessage = contactFormMessageDao.getContactFormMessage(contactFormMessageId);
 		serviceUtils.changeIsRepliedStatus(contactFormMessage);
 
 	}
@@ -102,27 +120,15 @@ public class ContactFormMessageServiceImpl implements ContactFormMessageService 
 
 	@Override
 	@Transactional
-	public long getContactFormMessageAmountOfSearchResult(String[] searchParameters) {
-
-		String searchType = "SELECT COUNT(*) FROM ContactFormMessage where ";
-		String[] fieldsName = { "senderName", "senderEmail", "messageSubject", "date", "listType" };
-		String hql = searchEngineUtils.prepareHqlUsingContactFormMessageSearchParameters(searchParameters, searchType,
-				fieldsName);
-
-		return contactFormMessageDao.getNumberOfContactFormMessageSearchResult(hql);
-	}
-
-	@Override
-	@Transactional
 	public ContactFormMessage getContactFormMessage(Long contactFormMessageId) {
 		return contactFormMessageDao.getContactFormMessage(contactFormMessageId);
 	}
 
 	@Override
 	@Transactional
-	public void setContactFormMessageReadStatusTrue(long selectedCheckboxValue) {
+	public void setContactFormMessageReadStatusTrue(long contactFormMessageId) {
 
-		ContactFormMessage contactFormMessage = contactFormMessageDao.getContactFormMessage(selectedCheckboxValue);
+		ContactFormMessage contactFormMessage = contactFormMessageDao.getContactFormMessage(contactFormMessageId);
 		contactFormMessage.setIsReaded(true);
 
 	}

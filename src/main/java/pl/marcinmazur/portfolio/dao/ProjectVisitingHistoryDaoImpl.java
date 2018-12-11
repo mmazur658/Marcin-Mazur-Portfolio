@@ -10,11 +10,27 @@ import org.springframework.stereotype.Repository;
 
 import pl.marcinmazur.portfolio.entity.ProjectVisitingHistory;
 
+/**
+ * Repository class for performing database operations on ProjectVisitingHistory
+ * objects.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Repository
 public class ProjectVisitingHistoryDaoImpl implements ProjectVisitingHistoryDao {
 
+	/**
+	 * The EntityManager interface
+	 */
 	private EntityManager entityManager;
 
+	/**
+	 * Constructs a ProjectVisitingHistoryDaoImpl with the EntityManager
+	 * 
+	 * @param entityManager
+	 *            The EntityManager
+	 */
 	@Autowired
 	public ProjectVisitingHistoryDaoImpl(EntityManager entityManager) {
 		this.entityManager = entityManager;

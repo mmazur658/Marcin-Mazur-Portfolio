@@ -2,6 +2,7 @@ package pl.marcinmazur.portfolio.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,22 +11,48 @@ import pl.marcinmazur.portfolio.dao.NotificationDao;
 import pl.marcinmazur.portfolio.entity.AccessCode;
 import pl.marcinmazur.portfolio.entity.Notification;
 import pl.marcinmazur.portfolio.utils.NotificationUtils;
-import pl.marcinmazur.portfolio.utils.ServiceUtils;
 
+/**
+ * Service class for managing notifications.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Service
 public class NotificationServiceImpl implements NotificationService {
 
+	/**
+	 * The NotificationDao interface
+	 */
 	private NotificationDao notificationDao;
+
+	/**
+	 * The AccessCodeDao interface
+	 */
 	private AccessCodeDao accessCodeDao;
-	private ServiceUtils serviceUtils;
+
+	/**
+	 * The NotificationUtils interface
+	 */
 	private NotificationUtils notificationUtils;
 
+	/**
+	 * Constructs NotificationServiceImpl a with the NotificationDao, AccessCodeDao
+	 * and NotificationUtils.
+	 * 
+	 * @param notificationDao
+	 *            The NotificationDao interface
+	 * @param accessCodeDao
+	 *            The AccessCodeDao interface
+	 * @param notificationUtils
+	 *            The NotificationUtils interface
+	 */
+	@Autowired
 	public NotificationServiceImpl(NotificationDao notificationDao, AccessCodeDao accessCodeDao,
-			ServiceUtils serviceUtils, NotificationUtils notificationUtils) {
+			NotificationUtils notificationUtils) {
 		this.notificationDao = notificationDao;
 		this.accessCodeDao = accessCodeDao;
-		this.serviceUtils = serviceUtils;
-		this.notificationUtils= notificationUtils;
+		this.notificationUtils = notificationUtils;
 	}
 
 	@Override
@@ -49,9 +76,9 @@ public class NotificationServiceImpl implements NotificationService {
 
 	@Override
 	@Transactional
-	public void createNotificationAfterFirstCodeUsage(String accessCodeValue) {
+	public void createNotificationAfterFirstCodeUsing(String accessCodeValue) {
 
-		AccessCode theAccessCode = accessCodeDao.getSingleAccessCodeByValue(accessCodeValue);
+		AccessCode theAccessCode = accessCodeDao.getAccessCodeByValue(accessCodeValue);
 		Notification theNotification = notificationUtils.createNotificationAfterFirstCodeUsage(theAccessCode);
 
 		notificationDao.saveNotification(theNotification);

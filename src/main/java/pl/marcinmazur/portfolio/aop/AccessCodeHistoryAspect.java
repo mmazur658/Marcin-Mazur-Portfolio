@@ -10,27 +10,42 @@ import org.springframework.stereotype.Component;
 
 import pl.marcinmazur.portfolio.service.AccessCodeHistoryService;
 
+/**
+ * Aspect class used to create statistics of access codes.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Aspect
 @Component
 public class AccessCodeHistoryAspect {
-	
+
+	/**
+	 * The AccessCodeHistoryService interface
+	 */
 	private AccessCodeHistoryService accessCodeHistoryService;
-	
+
+	/**
+	 * Creates a AccessCodeHistoryAspect with the AccessCodeHistoryService
+	 * 
+	 * @param accessCodeHistoryService
+	 *            The AccessCodeHistoryService interface
+	 */
 	@Autowired
 	public AccessCodeHistoryAspect(AccessCodeHistoryService accessCodeHistoryService) {
-		this.accessCodeHistoryService=accessCodeHistoryService;
+		this.accessCodeHistoryService = accessCodeHistoryService;
 	}
-	
+
 	@Pointcut("execution(* pl.marcinmazur.portfolio.service.AccessCodeServiceImpl.createNewAccessCode(..))")
 	private void createNewAccessCode() {
 	}
-	
+
 	@Pointcut("execution(* pl.marcinmazur.portfolio.service.AccessCodeServiceImpl.isAccessCodeCorrect(..))")
 	private void usingAccessCode() {
 	}
-	
+
 	@Before("createNewAccessCode()")
-	public void creatingNewAccessCode(JoinPoint theJoinPoint)   {
+	public void creatingNewAccessCode(JoinPoint theJoinPoint) {
 
 		Object[] signatureArgs = theJoinPoint.getArgs();
 		String accessCodeValue = (String) signatureArgs[0];
@@ -38,14 +53,14 @@ public class AccessCodeHistoryAspect {
 		accessCodeHistoryService.createNewAccessCodeHistory(accessCodeValue);
 
 	}
-	
-	@AfterReturning(pointcut="usingAccessCode()", returning="retValue")
+
+	@AfterReturning(pointcut = "usingAccessCode()", returning = "retValue")
 	public void usingAccessCode(JoinPoint theJoinPoint, boolean retValue) {
-		
-		Object[] signatureArgs = theJoinPoint.getArgs();		
+
+		Object[] signatureArgs = theJoinPoint.getArgs();
 		String accessCodeValue = (String) signatureArgs[0];
 
-		if(retValue)
+		if (retValue)
 			accessCodeHistoryService.addAccessCodeHistoryAfterCodeUse(accessCodeValue);
 	}
 

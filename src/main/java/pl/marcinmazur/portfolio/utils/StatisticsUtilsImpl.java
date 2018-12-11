@@ -9,6 +9,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Utility class used to perform operations on access codes and project
+ * statistics
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Component
 public class StatisticsUtilsImpl implements StatisticsUtils {
 
@@ -37,8 +44,12 @@ public class StatisticsUtilsImpl implements StatisticsUtils {
 	@Override
 	public List<Object[]> prepareMonthlyStatsListToDisplay(List<Object[]> resultList, int monthLength) {
 
+		// Create a list and fill it with the Object[]. The number of Object[] is equal
+		// to monthLength
 		List<Object[]> mainList = new ArrayList<>();
 
+		// Each tempObject contains the two indexes: The number of the day and the
+		// default value of the calculator usage = 0
 		Object[] tempObject = new Object[2];
 
 		for (int i = 0; i < monthLength; i++) {
@@ -51,6 +62,7 @@ public class StatisticsUtilsImpl implements StatisticsUtils {
 
 		}
 
+		// Populate mainList with the values from resultList
 		String tempString;
 		int index;
 		int tempValue;
@@ -88,11 +100,12 @@ public class StatisticsUtilsImpl implements StatisticsUtils {
 	}
 
 	@Override
-	public List<CodeUsageHistoryResult> prepareCodeUsageHistoryResultListToDisplay(List<CodeUsageHistoryResult> codeUsageHistoryResultList) {
+	public List<CodeUsageHistoryResult> prepareCodeUsageHistoryResultListToDisplay(
+			List<CodeUsageHistoryResult> codeUsageHistoryResultList) {
 
 		codeUsageHistoryResultList.sort(Comparator.comparing(CodeUsageHistoryResult::getSumOfUsing).reversed());
 		codeUsageHistoryResultList = codeUsageHistoryResultList.subList(0, 3);
-		
+
 		return codeUsageHistoryResultList;
 
 	}

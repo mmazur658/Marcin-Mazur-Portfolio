@@ -10,12 +10,33 @@ import pl.marcinmazur.portfolio.dao.TaskDao;
 import pl.marcinmazur.portfolio.entity.Task;
 import pl.marcinmazur.portfolio.utils.ServiceUtils;
 
+/**
+ * Service class for managing tasks.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Service
 public class TaskServiceImpl implements TaskService {
 
+	/**
+	 * The TaskDao interface
+	 */
 	private TaskDao taskDao;
+
+	/**
+	 * The ServiceUtils interface
+	 */
 	private ServiceUtils serviceUtils;
 
+	/**
+	 * Constructs a TaskServiceImpl with the TaskDao and ServiceUtils.
+	 * 
+	 * @param taskDao
+	 *            The TaskDao interface
+	 * @param serviceUtils
+	 *            The ServiceUtils interface
+	 */
 	@Autowired
 	public TaskServiceImpl(TaskDao taskDao, ServiceUtils serviceUtils) {
 		this.taskDao = taskDao;
@@ -54,12 +75,10 @@ public class TaskServiceImpl implements TaskService {
 			String taskDescription, boolean taskIsActive, boolean taskIsCompleted) {
 
 		Task task = taskDao.getTaskById(taskId);
-		
+
 		serviceUtils.updateTask(task, taskName, taskDescription, taskIsActive, taskCategory, taskDate, taskDeadline,
-				 taskIsCompleted);
+				taskIsCompleted);
 
 	}
-
-
 
 }

@@ -3,13 +3,19 @@ package pl.marcinmazur.portfolio.utils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import pl.marcinmazur.portfolio.entity.AccessCode;
 import pl.marcinmazur.portfolio.entity.AccessCodeHistory;
 
+/**
+ * Utility class used to perform operations on AccessCodeHistory and AccessCode
+ * objects,
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Component
 public class AccessCodeUtilsImpl implements AccessCodeUtils {
 
@@ -22,7 +28,6 @@ public class AccessCodeUtilsImpl implements AccessCodeUtils {
 		accessCodeHistory.setAction(accessCodeHistoryActionName);
 
 		return accessCodeHistory;
-
 	}
 
 	@Override
@@ -31,23 +36,6 @@ public class AccessCodeUtilsImpl implements AccessCodeUtils {
 			return true;
 		else
 			return false;
-	}
-
-	@Override
-	public boolean isAccessCodeUniqe(List<AccessCode> accessCodeList) {
-
-		if (accessCodeList.size() == 0)
-			return true;
-		else
-			return false;
-	}
-
-	@Override
-	public boolean isAccessCodeCorrect(List<AccessCode> accessCodeList) {
-		if (accessCodeList.size() == 0)
-			return false;
-		else
-			return true;
 	}
 
 	@Override
@@ -62,7 +50,6 @@ public class AccessCodeUtilsImpl implements AccessCodeUtils {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override
@@ -78,5 +65,4 @@ public class AccessCodeUtilsImpl implements AccessCodeUtils {
 
 		return accessCode;
 	}
-
 }

@@ -1,10 +1,9 @@
 package pl.marcinmazur.portfolio.utils;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -41,25 +40,7 @@ class AccessCodeUtilsTest {
 
 	}
 
-	@Test
-	void shouldCheckIfAccessCodeIsUniqe() {
-
-		List<AccessCode> accessCodeList = new ArrayList<>();
-		assertTrue(accessCodeUtilsImpl.isAccessCodeUniqe(accessCodeList));
-
-		accessCodeList.add(new AccessCode());
-		assertFalse(accessCodeUtilsImpl.isAccessCodeUniqe(accessCodeList));
-
-	}
-
-	@Test
-	void shouldCheckIfAccessCodeIsCorrect() {
-		List<AccessCode> accessCodeList = new ArrayList<>();
-		assertFalse(accessCodeUtilsImpl.isAccessCodeCorrect(accessCodeList));
-
-		accessCodeList.add(new AccessCode());
-		assertTrue(accessCodeUtilsImpl.isAccessCodeCorrect(accessCodeList));
-	}
+	
 
 	@Test
 	void shouldUpdateAccessCode() {

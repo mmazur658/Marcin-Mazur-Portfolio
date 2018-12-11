@@ -10,11 +10,26 @@ import org.springframework.stereotype.Repository;
 
 import pl.marcinmazur.portfolio.entity.Task;
 
+/**
+ * Repository class for performing database operations on Task objects.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Repository
 public class TaskDaoImpl implements TaskDao {
 
+	/**
+	 * The EntityManager interface
+	 */
 	private EntityManager entityManager;
 
+	/**
+	 * Constructs a TaskDaoImpl with the EntityManager
+	 * 
+	 * @param entityManager
+	 *            The EntityManager
+	 */
 	@Autowired
 	public TaskDaoImpl(EntityManager entityManager) {
 		this.entityManager = entityManager;

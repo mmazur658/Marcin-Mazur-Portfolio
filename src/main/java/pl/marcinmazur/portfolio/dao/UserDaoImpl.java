@@ -9,11 +9,26 @@ import org.springframework.stereotype.Repository;
 
 import pl.marcinmazur.portfolio.entity.User;
 
+/**
+ * Repository class for performing database operations on User objects.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Repository
 public class UserDaoImpl implements UserDao {
 
+	/**
+	 * The EntityManager interface
+	 */
 	private EntityManager entityManager;
 
+	/**
+	 * Constructs a UserDaoImpl with the EntityManager
+	 * 
+	 * @param entityManager
+	 *            The EntityManager
+	 */
 	@Autowired
 	public UserDaoImpl(EntityManager entityManager) {
 		this.entityManager = entityManager;

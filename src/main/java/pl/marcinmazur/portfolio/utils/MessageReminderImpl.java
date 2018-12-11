@@ -10,17 +10,35 @@ import org.springframework.stereotype.Component;
 
 import pl.marcinmazur.portfolio.service.RaportAndReminderService;
 
+/**
+ * Utility class used for scheduling and generating reports and reminders.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Component
 @EnableScheduling
 public class MessageReminderImpl {
 
+	/**
+	 * The RaportAndReminderService interface
+	 */
 	private RaportAndReminderService raportAndReminderService;
 
+	/**
+	 * Constructs a MessageReminderImpl with the RaportAndReminderService.
+	 * 
+	 * @param raportAndReminderService
+	 *            The RaportAndReminderService interface
+	 */
 	@Autowired
 	public MessageReminderImpl(RaportAndReminderService raportAndReminderService) {
 		this.raportAndReminderService = raportAndReminderService;
 	}
 
+	/**
+	 * Generates Notification if the one or more messages are unread longer than scheduled time.
+	 */
 	@Scheduled(fixedDelay = 60 * 60 * 1000)
 	public void unreadMessagaReminder() {
 

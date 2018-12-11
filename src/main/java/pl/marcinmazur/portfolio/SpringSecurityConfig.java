@@ -12,13 +12,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/**
+ * Spring Security class
+ * 
+ * @author Marcin Marcin
+ *
+ */
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	private DataSource dataSource;
-	
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -35,9 +40,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// .and().exceptionHandling().accessDeniedPage("/access-denied");
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder();
+		return new BCryptPasswordEncoder();
 	}
 }

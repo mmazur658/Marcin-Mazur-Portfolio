@@ -7,6 +7,12 @@ import org.springframework.stereotype.Component;
 import pl.marcinmazur.portfolio.entity.AccessCode;
 import pl.marcinmazur.portfolio.entity.Notification;
 
+/**
+ * Utility class used to perform operations on Notification objects.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Component
 public class NotificationUtilsImpl implements NotificationUtils {
 

@@ -15,15 +15,56 @@ import pl.marcinmazur.portfolio.utils.CodeUsageHistoryResult;
 import pl.marcinmazur.portfolio.utils.ProjectVisitingHistoryResult;
 import pl.marcinmazur.portfolio.utils.StatisticsUtils;
 
+/**
+ * Service class for managing statistics of access codes and project visiting.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Service
 public class StatisticServiceImpl implements StatisticService {
 
+	/**
+	 * The ProjectVisitingHistoryDao interface
+	 */
 	private ProjectVisitingHistoryDao projectVisitingHistoryDao;
+
+	/**
+	 * The ContactFormMessageDao interface
+	 */
 	private ContactFormMessageDao contactFormMessageDao;
+
+	/**
+	 * The AccessCodeHistoryDao interface
+	 */
 	private AccessCodeHistoryDao accessCodeHistoryDao;
+
+	/**
+	 * The AccessCodeDao interface
+	 */
 	private AccessCodeDao accessCodeDao;
+
+	/**
+	 * The StatisticsUtils interface
+	 */
 	private StatisticsUtils statisticsUtils;
 
+	/**
+	 * Constructs a StatisticServiceImpl with the ProjectVisitingHistoryDao,
+	 * AccessCodeDao, ContactFormMessageDao, AccessCodeHistoryDao and
+	 * StatisticsUtils.
+	 * 
+	 * @param projectVisitingHistoryDao
+	 *            The ProjectVisitingHistoryDao interface
+	 * @param accessCodeDao
+	 *            The AccessCodeDao interface
+	 * @param contactFormMessageDao
+	 *            The ContactFormMessageDao interface
+	 * @param accessCodeHistoryDao
+	 *            The AccessCodeHistoryDao interface
+	 * @param statisticsUtils
+	 *            The StatisticsUtils interface
+	 */
 	@Autowired
 	public StatisticServiceImpl(ProjectVisitingHistoryDao projectVisitingHistoryDao, AccessCodeDao accessCodeDao,
 			ContactFormMessageDao contactFormMessageDao, AccessCodeHistoryDao accessCodeHistoryDao,
@@ -60,7 +101,7 @@ public class StatisticServiceImpl implements StatisticService {
 
 	@Override
 	@Transactional
-	public long getSumOfContactFormMessages(String startDate, String endDate) {
+	public long getNumberOfContactFormMessages(String startDate, String endDate) {
 
 		startDate = startDate + " 00:00:00.0";
 		endDate = endDate + " 23:59:59.9";
@@ -78,20 +119,20 @@ public class StatisticServiceImpl implements StatisticService {
 		startDate = startDate + " 00:00:00.0";
 		endDate = endDate + " 23:59:59.9";
 
-		// zebranie listy kodów
 		List<String> accessCodeValueList = accessCodeDao.getListOfAccessCodeValues();
 		List<CodeUsageHistoryResult> codeUsageHistoryResultList = new ArrayList<>();
 
-		// zebranie danych dla kodów
 		for (String accessCodeValue : accessCodeValueList) {
 
-			codeUsageHistoryResultList.add(statisticsUtils.createCodeUsageHistoryResult(accessCodeValue,
-					accessCodeHistoryDao.getSumOfGivenAccessCodeValueAndGivenDate(accessCodeValue, startDate, endDate),
+			codeUsageHistoryResultList.add(statisticsUtils.createCodeUsageHistoryResult(
+					accessCodeValue, accessCodeHistoryDao.getNumberOfGivenAccessCodeValueAndGivenDate(accessCodeValue,
+							startDate, endDate),
 					accessCodeDao.getAccessCodeOwenerByGivenAccessCodeValue(accessCodeValue)));
 
 		}
 
-		codeUsageHistoryResultList = statisticsUtils.prepareCodeUsageHistoryResultListToDisplay(codeUsageHistoryResultList);
+		codeUsageHistoryResultList = statisticsUtils
+				.prepareCodeUsageHistoryResultListToDisplay(codeUsageHistoryResultList);
 
 		return codeUsageHistoryResultList;
 	}
@@ -169,7 +210,7 @@ public class StatisticServiceImpl implements StatisticService {
 	}
 
 	@Override
-	public List<Object[]> getMonthlyDataForMessages(String startDate, String endDate, int monthLength) {
+	public List<Object[]> getMonthlyDataOfMessages(String startDate, String endDate, int monthLength) {
 
 		startDate = startDate + " 00:00:00.0";
 		endDate = endDate + " 23:59:59.9";

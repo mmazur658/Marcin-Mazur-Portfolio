@@ -10,20 +10,38 @@ import org.springframework.stereotype.Repository;
 
 import pl.marcinmazur.portfolio.entity.AccessCodeHistory;
 
+/**
+ * Repository class for performing database operations on AccessCodeHistory
+ * objects.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Repository
 public class AccessCodeHistoryDaoImpl implements AccessCodeHistoryDao {
 
+	/**
+	 * The EntityManager interface
+	 */
 	private EntityManager entityManager;
 
+	/**
+	 * Constructs a AccessCodeHistoryDaoImpl with the EntityManager
+	 * 
+	 * @param entityManager
+	 *            The EntityManager interface
+	 */
 	@Autowired
 	public AccessCodeHistoryDaoImpl(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 
+
 	@Override
 	public void saveAccessCodeHistory(AccessCodeHistory accessCodeHistory) {
 		entityManager.persist(accessCodeHistory);
 	}
+
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -34,8 +52,9 @@ public class AccessCodeHistoryDaoImpl implements AccessCodeHistoryDao {
 		theQuery.setParameter("accessCodeValue", accessCodeValue);
 
 		return theQuery.getResultList();
-		
+
 	}
+
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -49,9 +68,10 @@ public class AccessCodeHistoryDaoImpl implements AccessCodeHistoryDao {
 		return (Long) theQuery.uniqueResult();
 	}
 
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public long getSumOfGivenAccessCodeValueAndGivenDate(String accessCodeValue, String startDate, String endDate) {
+	public long getNumberOfGivenAccessCodeValueAndGivenDate(String accessCodeValue, String startDate, String endDate) {
 
 		String hql = "SELECT COUNT(*) FROM AccessCodeHistory WHERE accessCodeValue=:accessCodeValue AND actionDate BETWEEN '"
 				+ startDate + "' AND '" + endDate + "'";

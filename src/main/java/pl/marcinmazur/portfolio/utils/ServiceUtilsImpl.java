@@ -11,8 +11,15 @@ import pl.marcinmazur.portfolio.entity.ContactFormMessage;
 import pl.marcinmazur.portfolio.entity.ProjectVisitingHistory;
 import pl.marcinmazur.portfolio.entity.Task;
 
+/**
+ * Utility class used to perform operations for service classes.
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Component
 public class ServiceUtilsImpl implements ServiceUtils {
+
 
 	@Override
 	public ContactFormMessage createContactFormMessage(String senderEmail, String senderName, String messageText,

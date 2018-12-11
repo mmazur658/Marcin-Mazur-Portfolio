@@ -1,0 +1,7 @@
+pl.marcinmazur.portfolio
+pl.marcinmazur.portfolio.aop
+pl.marcinmazur.portfolio.controller
+pl.marcinmazur.portfolio.dao
+pl.marcinmazur.portfolio.entity
+pl.marcinmazur.portfolio.service
+pl.marcinmazur.portfolio.utils

@@ -10,13 +10,41 @@ import pl.marcinmazur.portfolio.dao.AccessCodeHistoryDao;
 import pl.marcinmazur.portfolio.entity.AccessCodeHistory;
 import pl.marcinmazur.portfolio.utils.AccessCodeUtils;
 
+/**
+ * Service class for managing history of access code
+ * 
+ * @author Marcin Mazur
+ *
+ */
 @Service
 public class AccessCodeHistoryServiceImpl implements AccessCodeHistoryService {
 
+	/**
+	 * The AccessCodeHistoryDao interface
+	 */
 	private AccessCodeHistoryDao accessCodeHistoryDao;
+
+	/**
+	 * The NotificationService interface
+	 */
 	private NotificationService notificationService;
+
+	/**
+	 * The AccessCodeUtils interface
+	 */
 	private AccessCodeUtils accessCodeUtils;
 
+	/**
+	 * Constructs a AccessCodeHistoryServiceImpl with the
+	 * AccessCodeHistoryDao,AccessCodeUtils and NotificationService.
+	 * 
+	 * @param accessCodeHistoryDao
+	 *            The AccessCodeHistoryDao interface
+	 * @param accessCodeUtils
+	 *            The AccessCodeUtils interface
+	 * @param notificationService
+	 *            The NotificationService interface
+	 */
 	@Autowired
 	public AccessCodeHistoryServiceImpl(AccessCodeHistoryDao accessCodeHistoryDao, AccessCodeUtils accessCodeUtils,
 			NotificationService notificationService) {
@@ -39,7 +67,7 @@ public class AccessCodeHistoryServiceImpl implements AccessCodeHistoryService {
 		boolean hasCodeBeenUsedBefore = hasCodeBeenUsedBefore(accessCodeValue);
 
 		if (!hasCodeBeenUsedBefore)
-			notificationService.createNotificationAfterFirstCodeUsage(accessCodeValue);
+			notificationService.createNotificationAfterFirstCodeUsing(accessCodeValue);
 
 		accessCodeHistoryDao.saveAccessCodeHistory(
 				accessCodeUtils.createAccessCodeHistory(accessCodeValue, "The access code has been used."));
