@@ -107,7 +107,9 @@ public class AdminController {
 	 * </ul>
 	 * 
 	 * @param startDate
+	 *            The String containing the first day of the range
 	 * @param endDate
+	 *            The String containing the first day of the last
 	 * @param theModel
 	 *            The Model containing the data passed to the view
 	 * @return The String representing the name of the view
@@ -155,6 +157,7 @@ public class AdminController {
 	 * @param theModel
 	 *            The Model containing the data passed to the view
 	 * @param resultStartRange
+	 *            The Integer containing the number of results to return
 	 * @return The String representing the name of the view
 	 */
 	@RequestMapping("/get-contact-form-messages")

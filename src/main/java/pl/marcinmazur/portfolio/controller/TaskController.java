@@ -46,7 +46,7 @@ public class TaskController {
 	/**
 	 * Returns the view of "parts/new-task-modal".<br>
 	 * 
-	 * @returnThe String representing the name of the view
+	 * @return The String representing the name of the view
 	 */
 	@RequestMapping("/new-task")
 	public String showNewTaskForm() {

@@ -15,7 +15,9 @@ public interface ProjectVisitingHistoryService {
 	 * 
 	 * @param projectName
 	 *            The String containing the name of the project
+	 * @throws ParseException - A ParseException is thrown then the String date can't be parsed to Date object.
+	 *
 	 */
-	void addProjectVisitingHistory(String string) throws ParseException;
+	void addProjectVisitingHistory(String projectName) throws ParseException;
 
 }

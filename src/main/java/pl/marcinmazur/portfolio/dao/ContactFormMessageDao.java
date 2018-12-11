@@ -49,10 +49,10 @@ public interface ContactFormMessageDao {
 	ContactFormMessage getContactFormMessage(Long contactFormMessageId);
 
 	/**
-	 * Returns the list of ContactFormMessage for given hql
+	 * Returns the list of ContactFormMessage for given type of the list
 	 * 
-	 * @param hql
-	 *            A String containing the HQL statement to be executed
+	 * @param listType
+	 *            A String containing the type of the list (new-archive-all)
 	 * @param resultStartRange
 	 *            An Integer containing the first returning index
 	 * @param resultRange
@@ -71,10 +71,10 @@ public interface ContactFormMessageDao {
 	long getNumberOfUnreadContactFormMessages();
 
 	/**
-	 * Returns the number of contact form messages for the given hql
+	 * Returns the number of contact form messages for the given type of the list
 	 * 
-	 * @param hql
-	 *            A String containing the HQL statement to be executed
+	 * @param listType
+	 *            A String containing the type of the list (new-archive-all)
 	 * @return A long representing the number of contact form messages
 	 */
 	long getNumberOfContactFormMessagesForGivenListTpe(String listType);

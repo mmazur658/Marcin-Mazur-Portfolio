@@ -64,7 +64,7 @@ public interface ContactFormMessageService {
 	 *            The long containing the id of the message which status to be
 	 *            changed
 	 */
-	void changeContactFormMessageIsReadStatus(long selectedCheckboxValue);
+	void changeContactFormMessageIsReadStatus(long contactFormMessageId);
 
 	/**
 	 * Changes the isReplied status of the contact form message with given id
@@ -73,14 +73,14 @@ public interface ContactFormMessageService {
 	 *            The long containing the id of the message which status to be
 	 *            changed
 	 */
-	void changeContactFormMessageRepliedStatus(long selectedCheckboxValue);
+	void changeContactFormMessageRepliedStatus(long contactFormMessageId);
 
 	/**
 	 * Returns the list of ContactFormMessage for given search parameters
 	 * 
 	 * @param searchParameters
 	 *            The Array of the Strings containing the search parameters
-	 * @param resultRange
+	 * @param startResult
 	 *            The int containing the first returning index
 	 * @param resultRange
 	 *            The int containing the number of results
@@ -108,7 +108,7 @@ public interface ContactFormMessageService {
 	 *            The long containing the id of the message which status to be
 	 *            changed
 	 */
-	void setContactFormMessageReadStatusTrue(long selectedCheckboxValue);
+	void setContactFormMessageReadStatusTrue(long contactFormMessageId);
 
 	/**
 	 * Creates and saves the comment with given text

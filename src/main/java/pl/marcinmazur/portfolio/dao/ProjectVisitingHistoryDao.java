@@ -25,13 +25,6 @@ public interface ProjectVisitingHistoryDao {
 	void saveProjectVisitingHistory(ProjectVisitingHistory projectVisitingHistory);
 
 	/**
-	 * Returns the list of all project names
-	 * 
-	 * @return A List&lt;String&gt; representing the list of all project names
-	 */
-	long getSumOfVisitsForGivenProjectNameAndGivenDate(String projectName, String startDate, String endDate);
-
-	/**
 	 * Returns the number of visits for given project name and given date range
 	 * 
 	 * @param projectName
@@ -41,6 +34,13 @@ public interface ProjectVisitingHistoryDao {
 	 * @param endDate
 	 *            A String containing the last day of the range
 	 * @return A long representing the number of visits for given parameters
+	 */
+	long getSumOfVisitsForGivenProjectNameAndGivenDate(String projectName, String startDate, String endDate);
+
+	/**
+	 * Returns the list of all project names
+	 * 
+	 * @return A List&lt;String&gt; representing the list of all project names
 	 */
 	List<String> getListOfProjectNames();
 

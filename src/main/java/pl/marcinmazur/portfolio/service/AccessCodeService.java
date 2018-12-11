@@ -66,6 +66,9 @@ public interface AccessCodeService {
 	 *            The String containing the description of the access code
 	 * @param accessCodeOwner
 	 *            The String containing the owner of the access code
+	 * @throws ParseException
+	 *             A ParseException is thrown when the String Date can't be parsed
+	 *             to Date object.
 	 */
 	void updateAccessCode(String accessCodeId, String accessCodeValue, String accessCodeDate,
 			boolean accessCodeIsActive, String accessCodeDescription, String accessCodeOwner) throws ParseException;
