@@ -79,12 +79,11 @@ public class NotificationServiceImpl implements NotificationService {
 	public void createNotificationAfterFirstCodeUsing(String accessCodeValue) {
 
 		AccessCode theAccessCode = accessCodeDao.getAccessCodeByValue(accessCodeValue);
-		
+
 		if (theAccessCode != null) {
 			Notification theNotification = notificationUtils.createNotificationAfterFirstCodeUsage(theAccessCode);
 			notificationDao.saveNotification(theNotification);
 		}
-
 
 	}
 

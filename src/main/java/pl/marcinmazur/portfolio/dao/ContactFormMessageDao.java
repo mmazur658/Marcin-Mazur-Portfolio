@@ -135,5 +135,14 @@ public interface ContactFormMessageDao {
 	 *         contact form messages
 	 */
 	List<Object[]> getMonthlyMessagesData(String startDate, String endDate);
+	
+	/**
+	 * Returns the number of the contact form messages for given HQL Statement
+	 * 
+	 * @param hql
+	 *            The String containing the HQL Statement to be executed
+	 * @return An int representing the number of the contact form messages
+	 */
+	long getNumberOfAllContactFormMessages(String hql);
 
 }

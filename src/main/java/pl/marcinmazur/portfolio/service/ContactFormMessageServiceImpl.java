@@ -21,6 +21,12 @@ import pl.marcinmazur.portfolio.utils.ServiceUtils;
 public class ContactFormMessageServiceImpl implements ContactFormMessageService {
 
 	/**
+	 * The array containing the names of the message search parameters
+	 */
+	private final String[] NAMES_OF_CONTACT_FORM_MESSAGE_FIELDS = { "senderName", "senderEmail", "messageSubject",
+			"date", "listType" };
+
+	/**
 	 * The ContactFormMessageDao interface
 	 */
 	private ContactFormMessageDao contactFormMessageDao;
@@ -111,9 +117,8 @@ public class ContactFormMessageServiceImpl implements ContactFormMessageService 
 			Integer resultRange) {
 
 		String searchType = "from ContactFormMessage where ";
-		String[] fieldsName = { "senderName", "senderEmail", "messageSubject", "date", "listType" };
 		String hql = searchEngineUtils.prepareHqlUsingContactFormMessageSearchParameters(searchParameters, searchType,
-				fieldsName);
+				NAMES_OF_CONTACT_FORM_MESSAGE_FIELDS);
 
 		return contactFormMessageDao.getListOfContactFormMessages(hql, startResult, resultRange);
 	}
@@ -153,6 +158,27 @@ public class ContactFormMessageServiceImpl implements ContactFormMessageService 
 	@Transactional
 	public long getNumberOfContactFormMessageForGivenDate(String startDate, String endDate) {
 		return contactFormMessageDao.getNumberOfContactFormMessageForGivenDate(startDate, endDate);
+	}
+
+	@Override
+	public long getNumberOfAllContactFormMessages(String listType) {
+
+		// Prepare the HQL Statement
+		String hqlType = "SELECT COUNT(*) FROM ContactFormMessage ";
+		String hql = serviceUtils.prepareHqlDependsOnListType(hqlType, listType);
+
+		return contactFormMessageDao.getNumberOfAllContactFormMessages(hql);
+	}
+
+	@Override
+	public long getNumberOfContactFormMessagesForGivenSearchParams(String[] searchParametersValue) {
+
+		// Prepare the HQL Statement
+		String searchType = "SELECT COUNT(*) FROM ContactFormMessage WHERE ";
+		String hql = searchEngineUtils.prepareHqlUsingContactFormMessageSearchParameters(searchParametersValue,
+				searchType, NAMES_OF_CONTACT_FORM_MESSAGE_FIELDS);
+
+		return contactFormMessageDao.getNumberOfAllContactFormMessages(hql);
 	}
 
 }

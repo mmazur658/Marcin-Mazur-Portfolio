@@ -45,7 +45,6 @@ public class ProjectVisitingHistoryServiceImpl implements ProjectVisitingHistory
 		this.serviceUtils = serviceUtils;
 	}
 
-
 	@Override
 	@Transactional
 	public void addProjectVisitingHistory(String projectName) throws ParseException {

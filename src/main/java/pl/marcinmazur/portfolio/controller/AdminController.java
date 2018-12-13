@@ -38,6 +38,11 @@ import pl.marcinmazur.portfolio.utils.ProjectVisitingHistoryResult;
 @RequestMapping("/administrator-panel")
 public class AdminController {
 
+	/**
+	 * The number of the results to be returned
+	 */
+	private final int NUMBER_OF_RESULTS = 20;
+
 	/*
 	 * The ContactFormMessageService interface
 	 */
@@ -164,12 +169,12 @@ public class AdminController {
 	public String geContactFormMessageList(@RequestParam(name = "listType") String listType, Model theModel,
 			@RequestParam(required = false, name = "resultStartRange") Integer resultStartRange) {
 
-		Integer resultRange = 20;
+		// Integer resultRange = 20;
 		resultStartRange = (resultStartRange == null || resultStartRange == 0) ? 0 : resultStartRange;
 
 		List<ContactFormMessage> contactFormMessageList = contactFormMessageService.getContactFormMessages(listType,
-				resultStartRange, resultRange);
-		int totalResults = contactFormMessageList.size();
+				resultStartRange, NUMBER_OF_RESULTS);
+		long totalResults = contactFormMessageService.getNumberOfAllContactFormMessages(listType);
 
 		theModel.addAttribute("totalResults", totalResults);
 		theModel.addAttribute("contactFormMessageList", contactFormMessageList);
@@ -209,7 +214,7 @@ public class AdminController {
 			@RequestParam(required = false, name = "searchFormStartDate") String searchFormStartDate,
 			@RequestParam(required = false, name = "searchFormEndDate") String searchFormEndDate) {
 
-		Integer resultRange = 20;
+		// Integer resultRange = 20;
 		searchFormEndDate = (searchFormEndDate != "") ? searchFormEndDate + " 23:59:59.0" : "";
 		searchFormStartDate = (searchFormStartDate != "") ? searchFormStartDate + " 00:00:00.0" : "";
 
@@ -217,8 +222,9 @@ public class AdminController {
 				searchFormStartDate.trim(), searchFormEndDate.trim(), listType.trim() };
 
 		List<ContactFormMessage> contactFormMessageList = contactFormMessageService
-				.getContactFormMessageSearchResult(searchParametersValue, 0, resultRange);
-		int totalResults = contactFormMessageList.size();
+				.getContactFormMessageSearchResult(searchParametersValue, 0, NUMBER_OF_RESULTS);
+		long totalResults = contactFormMessageService
+				.getNumberOfContactFormMessagesForGivenSearchParams(searchParametersValue);
 
 		theModel.addAttribute("totalResults", totalResults);
 		theModel.addAttribute("contactFormMessageList", contactFormMessageList);

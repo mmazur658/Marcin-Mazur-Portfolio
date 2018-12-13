@@ -154,5 +154,15 @@ public class ContactFormMessageDaoImpl implements ContactFormMessageDao {
 
 		return theQuery.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public long getNumberOfAllContactFormMessages(String hql) {
+
+		Query<Long> theQuery = (Query<Long>) entityManager.createQuery(hql);
+		Long count = (Long) theQuery.uniqueResult();
+
+		return count;
+	}
 
 }

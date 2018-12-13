@@ -52,7 +52,6 @@ public class RaportAndReminderServiceImpl implements RaportAndReminderService {
 		this.notificationUtils = notificationUtils;
 	}
 
-
 	@Override
 	@Transactional
 	public long getNumberOfMessagesForGivenDate(String stringCurrentDate) {
@@ -63,7 +62,6 @@ public class RaportAndReminderServiceImpl implements RaportAndReminderService {
 		return contactFormMessageDao.getNumberOfContactFormMessagesForGivenDate(startDate, endDate);
 	}
 
-
 	@Override
 	@Transactional
 	public long getNumberOfUnreadMessagesForGivenDate(String stringCurrentDate) {
@@ -73,7 +71,6 @@ public class RaportAndReminderServiceImpl implements RaportAndReminderService {
 
 		return contactFormMessageDao.getNumberOfUnreadContactFormMessagesForGivenDate(startDate, endDate);
 	}
-
 
 	@Override
 	@Transactional
@@ -86,7 +83,6 @@ public class RaportAndReminderServiceImpl implements RaportAndReminderService {
 
 		notificationDao.saveNotification(theNotification);
 	}
-
 
 	@Override
 	@Transactional

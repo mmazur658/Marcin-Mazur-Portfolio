@@ -45,7 +45,6 @@ public class AccessCodeServiceImpl implements AccessCodeService {
 		this.accessCodeUtils = accessCodeUtils;
 	}
 
-
 	@Override
 	@Transactional
 	public void createNewAccessCode(String newAccessCodeValue, String newAccessCodeOwner,
@@ -55,7 +54,6 @@ public class AccessCodeServiceImpl implements AccessCodeService {
 				newAccessCodeDescription);
 		accessCodeDao.addNewAccessCode(accessCode);
 	}
-
 
 	@Override
 	@Transactional
@@ -70,14 +68,12 @@ public class AccessCodeServiceImpl implements AccessCodeService {
 
 	}
 
-
 	@Override
 	@Transactional
 	public List<AccessCode> getAccessCodes() {
 
 		return accessCodeDao.getListOfAccessCodes();
 	}
-
 
 	@Override
 	@Transactional
@@ -86,7 +82,6 @@ public class AccessCodeServiceImpl implements AccessCodeService {
 		return accessCodeDao.getAccessCodeById(accessCodeId);
 	}
 
-	
 	@Override
 	@Transactional
 	public void updateAccessCode(String accessCodeId, String accessCodeValue, String accessCodeDate,
@@ -97,7 +92,6 @@ public class AccessCodeServiceImpl implements AccessCodeService {
 				accessCodeOwner);
 
 	}
-
 
 	@Override
 	@Transactional
