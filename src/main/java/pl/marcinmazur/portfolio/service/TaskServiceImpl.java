@@ -53,10 +53,9 @@ public class TaskServiceImpl implements TaskService {
 	@Transactional
 	public List<Task> getTaskList(String taskListType) {
 
-		if (taskListType.equals("active"))
-			return taskDao.getTaskList(true);
-		else
-			return taskDao.getTaskList(false);
+		boolean isTypeOfListActive = (taskListType.equals("active")) ? true : false;
+
+		return taskDao.getTaskList(isTypeOfListActive);
 
 	}
 

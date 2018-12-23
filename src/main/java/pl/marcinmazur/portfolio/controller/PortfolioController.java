@@ -2,13 +2,13 @@ package pl.marcinmazur.portfolio.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.net.URL;
+import java.io.IOException;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +16,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import pl.marcinmazur.portfolio.utils.FtpUtils;
 
 /**
  * The controller class is used to return the view depending on the user
@@ -38,7 +40,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
+
 public class PortfolioController {
+
+	/**
+	 * The FtpUtils interface
+	 */
+	private FtpUtils ftpUtils;
+
+	/**
+	 * Constructs a PortfolioController with the FtpUtils
+	 * 
+	 * @param ftpUtils
+	 *            The FtpUtils interface
+	 */
+	@Autowired
+	public PortfolioController(FtpUtils ftpUtils) {
+		this.ftpUtils = ftpUtils;
+	}
 
 	/**
 	 * Returns the view of "index".
@@ -112,20 +131,18 @@ public class PortfolioController {
 	}
 
 	/**
-	 * Returns the Resume as a PDF File
+	 * Returns the resume in Polish as a PDF File
 	 * 
 	 * @param locale
 	 *            The Locale containing the user`s locale
 	 * @return A PDF file representing the Marcin Mazur`s Resume
-	 * @throws FileNotFoundException
-	 *             A FileNotFoundException is thrown then the path of the file is
-	 *             incorrect.
+	 * @throws IOException
+	 *             A IOException is thrown then the file is not available
 	 */
 	@RequestMapping("/download-resume-pl")
-	public ResponseEntity<InputStreamResource> downloadResumePl(Locale locale) throws FileNotFoundException {
+	public ResponseEntity<InputStreamResource> downloadResumePl(Locale locale) throws IOException {
 
-		URL url = ClassLoader.class.getResource("/files/Mazur_Marcin_CV_PL.pdf");
-		File resume = new File(url.getPath());
+		File resume = ftpUtils.getFileWithGievenNameFromFtpServer("Mazur_Marcin_CV_PL.pdf");
 
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setContentType(MediaType.APPLICATION_PDF);
@@ -138,20 +155,19 @@ public class PortfolioController {
 	}
 
 	/**
-	 * Returns the Motivational Letter as a PDF File
+	 * Returns the resume in English as a PDF File
 	 * 
 	 * @param locale
 	 *            The Locale containing the user`s locale
 	 * @return A PDF file representing the Marcin Mazur`s motivational letter
-	 * @throws FileNotFoundException
-	 *             A FileNotFoundException is thrown then the path of the file is
-	 *             incorrect.
+	 * @throws IOException
+	 *             A IOException is thrown then the file is not available
 	 */
-	@RequestMapping("/download-resume-en")
-	public ResponseEntity<InputStreamResource> downloadResumeEn(Locale locale) throws FileNotFoundException {
 
-		URL url = ClassLoader.class.getResource("/files/Mazur_Marcin_CV_EN.pdf");
-		File resume = new File(url.getPath());
+	@RequestMapping("/download-resume-en")
+	public ResponseEntity<InputStreamResource> downloadResumeEn(Locale locale) throws IOException {
+
+		File resume = ftpUtils.getFileWithGievenNameFromFtpServer("Mazur_Marcin_Resume_EN.pdf");
 
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setContentType(MediaType.APPLICATION_PDF);
@@ -162,4 +178,5 @@ public class PortfolioController {
 		return new ResponseEntity<InputStreamResource>(isr, responseHeaders, HttpStatus.OK);
 
 	}
+
 }

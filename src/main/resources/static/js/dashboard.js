@@ -37,7 +37,7 @@ $('#dashboardStatistickSelect').change(function(){
 	var endDate;
 	var date;
 		
-	// loda data for given date range
+	// load data for given date range
 	if (selectedValue == 'today') {	
 		
 		date = new Date();
@@ -47,7 +47,7 @@ $('#dashboardStatistickSelect').change(function(){
 		
 	} else if(selectedValue == 'yesterday'){	
 		
-		vdate = new Date();	
+		var date = new Date();	
 		date.setDate(date.getDate() - 1);	
 		startDate = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();	
 		endDate = startDate;
@@ -97,7 +97,7 @@ function loadNotificationListModal(){
 	}).fadeIn('1000');
 }
 
-// * * * Show toastr alert depending on the langauge  * * *
+// * * * Show toastr alert depending on the language  * * *
 function showCustomAlert(type, titlePL, textPL, titleEN, textEN){
 	
 	var userLang = document.documentElement.lang;

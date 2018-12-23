@@ -103,15 +103,12 @@ public class AccessCodeDaoImpl implements AccessCodeDao {
 		Query<String> theQuery = (Query<String>) entityManager.createQuery(hql);
 		theQuery.setParameter("accessCodeValue", accessCodeValue);
 
-		String accessCodeOwner = null;
-
 		try {
-			accessCodeOwner = theQuery.getSingleResult();
+			return theQuery.getSingleResult();
 		} catch (NullPointerException e) {
-			accessCodeOwner = "Anonymous";
+			return "Anonymous";
 		}
 
-		return accessCodeOwner;
 	}
 
 }

@@ -42,14 +42,11 @@ public class UserDaoImpl implements UserDao {
 		Query<User> theQuery = (Query<User>) entityManager.createQuery(hql);
 		theQuery.setParameter("userName", userName);
 
-		User tempUser;
-
 		try {
-			tempUser = theQuery.getSingleResult();
+			return theQuery.getSingleResult();
 		} catch (NoResultException e) {
-			tempUser = null;
+			return null;
 		}
 
-		return tempUser;
 	}
 }

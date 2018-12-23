@@ -15,12 +15,12 @@ Administrator Panel: Dashboard presents the most important information like numb
 
 Administrator Panel: Contact Form Messages management module – this module is used to manage all messages from contact form. Available actions: read one or many at once, change status, delete, add comments and search for messages
 
-Administrator Panel: Statistics – this section shows general and detailed statistics of the messages and website traffic
+Administrator Panel: Statistics – this section shows general and detailed statistics of the messages and web site traffic
 
-Panel Administratora: Access Codes –this module is used to generate and manage access codes
+Administrator Panel: Access Codes –this module is used to generate and manage access codes
 
 Administrator Panel: Tasks – To do list
 
 Information about page are displayed in modal window, which is shown after clicking the footer
 
-The webpage is available in Polish and English.
+The web page is available in Polish and English.

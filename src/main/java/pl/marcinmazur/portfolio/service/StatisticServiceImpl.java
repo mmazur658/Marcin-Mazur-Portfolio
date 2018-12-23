@@ -81,8 +81,7 @@ public class StatisticServiceImpl implements StatisticService {
 	public List<ProjectVisitingHistoryResult> getProjectVisitingHistoryListForGivenDate(String startDate,
 			String endDate) {
 
-		startDate = startDate + " 00:00:00.0";
-		endDate = endDate + " 23:59:59.9";
+		transformDateToFullForm(startDate, endDate);
 
 		List<String> projectsNameList = projectVisitingHistoryDao.getListOfProjectNames();
 
@@ -103,8 +102,7 @@ public class StatisticServiceImpl implements StatisticService {
 	@Transactional
 	public long getNumberOfContactFormMessages(String startDate, String endDate) {
 
-		startDate = startDate + " 00:00:00.0";
-		endDate = endDate + " 23:59:59.9";
+		transformDateToFullForm(startDate, endDate);
 
 		long SumOfContactFormMessages = contactFormMessageDao.getNumberOfContactFormMessagesForGivenDate(startDate,
 				endDate);
@@ -116,8 +114,7 @@ public class StatisticServiceImpl implements StatisticService {
 	@Transactional
 	public List<CodeUsageHistoryResult> getCodeUsageHistoryResultListForGivenDate(String startDate, String endDate) {
 
-		startDate = startDate + " 00:00:00.0";
-		endDate = endDate + " 23:59:59.9";
+		transformDateToFullForm(startDate, endDate);
 
 		List<String> accessCodeValueList = accessCodeDao.getListOfAccessCodeValues();
 		List<CodeUsageHistoryResult> codeUsageHistoryResultList = new ArrayList<>();
@@ -169,8 +166,7 @@ public class StatisticServiceImpl implements StatisticService {
 	public List<Object[]> getMonthlyDataForSelectedProject(String projectName, String startDate, String endDate,
 			int monthLength) {
 
-		startDate = startDate + " 00:00:00.0";
-		endDate = endDate + " 23:59:59.9";
+		transformDateToFullForm(startDate, endDate);
 
 		List<Object[]> resultList = projectVisitingHistoryDao.getMonthlyDataForSelectedProject(projectName, startDate,
 				endDate);
@@ -212,13 +208,27 @@ public class StatisticServiceImpl implements StatisticService {
 	@Override
 	public List<Object[]> getMonthlyDataOfMessages(String startDate, String endDate, int monthLength) {
 
-		startDate = startDate + " 00:00:00.0";
-		endDate = endDate + " 23:59:59.9";
+		transformDateToFullForm(startDate, endDate);
 
 		List<Object[]> resultList = contactFormMessageDao.getMonthlyMessagesData(startDate, endDate);
 		List<Object[]> mainList = statisticsUtils.prepareMonthlyStatsListToDisplay(resultList, monthLength);
 
 		return mainList;
+	}
+
+	/**
+	 * Transforms the given dates to the full day range.<br>
+	 * Adds " 00:00:00.0" to the startDate and " 23:59:59.9" to the endDate
+	 * 
+	 * @param startDate
+	 *            The String containing the first day of the range
+	 * @param endDate
+	 *            The String containing the last day of the range
+	 */
+	public void transformDateToFullForm(String startDate, String endDate) {
+
+		startDate = startDate + " 00:00:00.0";
+		endDate = endDate + " 23:59:59.9";
 	}
 
 }

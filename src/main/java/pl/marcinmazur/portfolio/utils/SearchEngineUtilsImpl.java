@@ -25,7 +25,6 @@ public class SearchEngineUtilsImpl implements SearchEngineUtils {
 	public String prepareHqlUsingContactFormMessageSearchParameters(String[] searchParameters, String searchType,
 			String[] fieldsName) {
 
-		
 		boolean isContent = false;
 		StringBuilder sb = new StringBuilder();
 
@@ -37,8 +36,8 @@ public class SearchEngineUtilsImpl implements SearchEngineUtils {
 			sb.append(fieldsName[0] + " like '%" + searchParameters[0] + "%'");
 			isContent = true;
 		}
-		
-		// build HQL with given search parameters values and names of the fields		
+
+		// build HQL with given search parameters values and names of the fields
 		for (int i = 1; i <= fieldsName.length - 4; i++) {
 			if (!searchParameters[i].equals("")) {
 				if (isContent) {

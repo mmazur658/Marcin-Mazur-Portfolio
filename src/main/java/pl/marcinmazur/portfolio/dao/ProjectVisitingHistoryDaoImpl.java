@@ -80,14 +80,12 @@ public class ProjectVisitingHistoryDaoImpl implements ProjectVisitingHistoryDao 
 		Query<Long> theQuery = (Query<Long>) entityManager.createQuery(hql);
 		theQuery.setParameter("projectName", projectName);
 
-		long sumOfGivenProject;
-
 		try {
-			sumOfGivenProject = (Long) theQuery.uniqueResult();
+			return (Long) theQuery.uniqueResult();
 		} catch (NullPointerException e) {
-			sumOfGivenProject = 0;
+			return 0;
 		}
-		return sumOfGivenProject;
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -99,6 +97,7 @@ public class ProjectVisitingHistoryDaoImpl implements ProjectVisitingHistoryDao 
 
 		Query<Object[]> theQuery = (Query<Object[]>) entityManager.createQuery(hql);
 		theQuery.setParameter("projectName", projectName);
+
 		List<Object[]> tempList = theQuery.getResultList();
 
 		return tempList;

@@ -60,11 +60,9 @@ public class AccessCodeServiceImpl implements AccessCodeService {
 	public boolean isAccessCodeUnique(String accessCodeValue) {
 
 		AccessCode theAccessCode = accessCodeDao.getAccessCodeByValue(accessCodeValue);
+		boolean isAccessCodeUnique = (theAccessCode == null) ? true : false;
 
-		if (theAccessCode == null)
-			return true;
-		else
-			return false;
+		return isAccessCodeUnique;
 
 	}
 
@@ -98,11 +96,10 @@ public class AccessCodeServiceImpl implements AccessCodeService {
 	public boolean isAccessCodeCorrect(String accessCodeValue) {
 
 		AccessCode theAccessCode = accessCodeDao.getAccessCodeByValue(accessCodeValue);
+		boolean isAccessCodeCorrect = (theAccessCode != null) ? true : false;
 
-		if (theAccessCode != null)
-			return true;
-		else
-			return false;
+		return isAccessCodeCorrect;
 
 	}
+
 }

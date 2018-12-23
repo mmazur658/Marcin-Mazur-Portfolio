@@ -32,10 +32,10 @@ public class AccessCodeUtilsImpl implements AccessCodeUtils {
 
 	@Override
 	public boolean hasCodeBeenUsedBefore(long numberOfCodeUsage) {
-		if (numberOfCodeUsage > 0)
-			return true;
-		else
-			return false;
+
+		boolean hasCodeBeenUsedBefore = (numberOfCodeUsage > 0) ? true : false;
+
+		return hasCodeBeenUsedBefore;
 	}
 
 	@Override

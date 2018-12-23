@@ -36,12 +36,10 @@ public class AccessCodeHistoryDaoImpl implements AccessCodeHistoryDao {
 		this.entityManager = entityManager;
 	}
 
-
 	@Override
 	public void saveAccessCodeHistory(AccessCodeHistory accessCodeHistory) {
 		entityManager.persist(accessCodeHistory);
 	}
-
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -55,7 +53,6 @@ public class AccessCodeHistoryDaoImpl implements AccessCodeHistoryDao {
 
 	}
 
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public long getNumberOfCodeUsage(String accessCodeValue, String action) {
@@ -68,7 +65,6 @@ public class AccessCodeHistoryDaoImpl implements AccessCodeHistoryDao {
 		return (Long) theQuery.uniqueResult();
 	}
 
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public long getNumberOfGivenAccessCodeValueAndGivenDate(String accessCodeValue, String startDate, String endDate) {
@@ -79,15 +75,12 @@ public class AccessCodeHistoryDaoImpl implements AccessCodeHistoryDao {
 		Query<Long> theQuery = (Query<Long>) entityManager.createQuery(hql);
 		theQuery.setParameter("accessCodeValue", accessCodeValue);
 
-		long sumOfGivenAccessCodeHistory;
-
 		try {
-			sumOfGivenAccessCodeHistory = (Long) theQuery.uniqueResult();
+			return (Long) theQuery.uniqueResult();
 		} catch (NullPointerException e) {
-			sumOfGivenAccessCodeHistory = 0;
+			return 0;
 		}
 
-		return sumOfGivenAccessCodeHistory;
 	}
 
 }

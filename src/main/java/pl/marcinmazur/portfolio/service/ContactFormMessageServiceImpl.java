@@ -163,7 +163,6 @@ public class ContactFormMessageServiceImpl implements ContactFormMessageService 
 	@Override
 	public long getNumberOfAllContactFormMessages(String listType) {
 
-		// Prepare the HQL Statement
 		String hqlType = "SELECT COUNT(*) FROM ContactFormMessage ";
 		String hql = serviceUtils.prepareHqlDependsOnListType(hqlType, listType);
 
@@ -173,7 +172,6 @@ public class ContactFormMessageServiceImpl implements ContactFormMessageService 
 	@Override
 	public long getNumberOfContactFormMessagesForGivenSearchParams(String[] searchParametersValue) {
 
-		// Prepare the HQL Statement
 		String searchType = "SELECT COUNT(*) FROM ContactFormMessage WHERE ";
 		String hql = searchEngineUtils.prepareHqlUsingContactFormMessageSearchParameters(searchParametersValue,
 				searchType, NAMES_OF_CONTACT_FORM_MESSAGE_FIELDS);

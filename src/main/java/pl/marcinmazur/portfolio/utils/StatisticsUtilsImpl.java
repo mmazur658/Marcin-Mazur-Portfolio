@@ -37,7 +37,6 @@ public class StatisticsUtilsImpl implements StatisticsUtils {
 	public String getToday() {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
 		return sdf.format(new Date()) + " 00:00:00.0";
 	}
 
@@ -48,21 +47,25 @@ public class StatisticsUtilsImpl implements StatisticsUtils {
 		// to monthLength
 		List<Object[]> mainList = new ArrayList<>();
 
-		// Each tempObject contains the two indexes: The number of the day and the
-		// default value of the calculator usage = 0
-		Object[] tempObject = new Object[2];
-
-		for (int i = 0; i < monthLength; i++) {
-			tempObject = new Object[2];
-
-			tempObject[0] = i + 1;
-
-			tempObject[1] = 0;
-			mainList.add(tempObject);
-
-		}
+		// The list must contains the number of Object[] equals to monthLength
+		addBlankObjectsToTheList(mainList, monthLength);
 
 		// Populate mainList with the values from resultList
+		populateListWithValuesFromAnotherList(resultList, mainList);
+
+		return mainList;
+	}
+
+	/**
+	 * Populates the mainList with the values from the resultList
+	 * 
+	 * @param resultList
+	 *            The list of Object[] containing the list with values
+	 * @param mainList
+	 *            The list of Object[] containing the list to be populated
+	 */
+	private void populateListWithValuesFromAnotherList(List<Object[]> resultList, List<Object[]> mainList) {
+
 		String tempString;
 		int index;
 		int tempValue;
@@ -82,7 +85,6 @@ public class StatisticsUtilsImpl implements StatisticsUtils {
 
 		}
 
-		return mainList;
 	}
 
 	@Override
@@ -90,7 +92,6 @@ public class StatisticsUtilsImpl implements StatisticsUtils {
 			String accessCodeOwener) {
 
 		CodeUsageHistoryResult codeUsageHistoryResult = new CodeUsageHistoryResult();
-
 		codeUsageHistoryResult = new CodeUsageHistoryResult();
 		codeUsageHistoryResult.setAccessCodeValue(accessCodeValue);
 		codeUsageHistoryResult.setSumOfUsing(sumOfUsage);
@@ -114,11 +115,37 @@ public class StatisticsUtilsImpl implements StatisticsUtils {
 	public ProjectVisitingHistoryResult createProjectVisitingHistoryResult(String projectName, long sumOfVisits) {
 
 		ProjectVisitingHistoryResult theProjectVisitingHistoryResult = new ProjectVisitingHistoryResult();
-
 		theProjectVisitingHistoryResult = new ProjectVisitingHistoryResult();
 		theProjectVisitingHistoryResult.setProjectName(projectName);
 		theProjectVisitingHistoryResult.setSumOfVisits(sumOfVisits);
 
 		return theProjectVisitingHistoryResult;
+	}
+
+	/**
+	 * Adds a Object[] to the list. The list must contains the number of Object[]
+	 * equals to monthLength
+	 * 
+	 * @param mainList
+	 *            The list of Object[] containing the list to be populated
+	 * @param monthLength
+	 *            The int containing the length of the month
+	 */
+	private void addBlankObjectsToTheList(List<Object[]> mainList, int monthLength) {
+
+		// Each tempObject contains two indexes: The number of the day and the
+		// default value of the calculator usage equals to 0
+		Object[] tempObject = new Object[2];
+
+		for (int i = 0; i < monthLength; i++) {
+			tempObject = new Object[2];
+
+			tempObject[0] = i + 1;
+
+			tempObject[1] = 0;
+			mainList.add(tempObject);
+
+		}
+
 	}
 }
