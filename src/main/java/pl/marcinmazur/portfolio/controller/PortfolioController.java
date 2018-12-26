@@ -105,7 +105,7 @@ public class PortfolioController {
 	 * 
 	 * @return The String representing the name of the view
 	 */
-	@RequestMapping("/simple-abc-library")
+	@RequestMapping("/java-project/simple-abc-library")
 	public String showSimpleAbcLibraryProject() {
 		return "simple-abc-library";
 	}
@@ -115,7 +115,7 @@ public class PortfolioController {
 	 * 
 	 * @return The String representing the name of the view
 	 */
-	@RequestMapping("/web-calculator")
+	@RequestMapping("/java-project/web-calculator")
 	public String showWebCalculatorProject() {
 		return "web-calculator";
 	}
@@ -125,7 +125,7 @@ public class PortfolioController {
 	 * 
 	 * @return The String representing the name of the view
 	 */
-	@RequestMapping("/marcin-mazur-portfolio")
+	@RequestMapping("/java-project/marcin-mazur-portfolio")
 	public String showMarcinMazurPortfolioProject() {
 		return "marcin-mazur-portfolio";
 	}

@@ -5,6 +5,8 @@
 
   <link th:replace="parts/header"></link>
   <title>Marcin Mazur - Java & Front-end Developer - Marcin Mazur Portfolio</title>
+  <meta name="keywords" content="portfolio, java, front-end, młodszy programista, javascript, junior developer, java project"/>
+  <meta name="description" content="Marcin Mazur Portfolio | Java and Front-end Developer - Zapraszam do odwiedzenia mojego portfolio"/>
  
 </head><!-- HEADER WITH IMPORTS, TITLE, STYLE -->
 
@@ -48,7 +50,7 @@
 	<div class="row d-flex justify-content-center mb-4">			
 		<div class="col-md-12">
 <!-- ABOUT ME PHOTO & NAME-->			
-			<img class="shadow mb-3 wow fadeIn br-50-perc" data-wow-delay="0.2s" th:src="@{/img/Mazur_Marcin-min.jpg}" alt="Avatar">
+			<img class="shadow mb-3 wow fadeIn br-50-perc" data-wow-delay="0.2s" th:src="@{/img/Mazur_Marcin-min.jpg}" alt="Marcin Mazur photo">
 			<h3 class="font-weight-bold mb-3 wow fadeIn text-muted" data-wow-delay="0.3s">Marcin Mazur</h3>
 <!-- ABOUT ME PHOTO & NAME -->	
 <!-- ABOUT ME TEXT-->			          	          		
@@ -76,13 +78,13 @@
     	<div class="col-lg-4 col-md-6 mb-4">
 <!-- SIMPLE ABC LIBRARY IMAGE-->
             <div class="view overlay rounded z-depth-1">
-            	<img th:src="@{/img/projects/library/simple_abc_library_main_page.png}" class="img-fluid" alt="Simple ABC Library">
-                    <a th:href="@{simple-abc-library}"><div class="mask rgba-white-slight"></div></a>
+            	<img th:src="@{/img/projects/library/simple_abc_library_main_page.png}" class="img-fluid" alt="Simple ABC Library Java Project">
+                    <a th:href="@{/java-project/simple-abc-library}"><div class="mask rgba-white-slight"></div></a>
             </div>
 <!-- SIMPLE ABC LIBRARY IMAGE-->
 <!-- SIMPLE ABC LIBRARY CONTENT-->
                 <div class="card-body pb-0">
-                    <a th:href="@{simple-abc-library}" class="btn btn-block bg-grey font-weight-bold text-white">Simple ABC Library</a>
+                    <a th:href="@{/java-project/simple-abc-library}" class="btn btn-block bg-grey font-weight-bold text-white">Simple ABC Library</a>
                 </div>
 <!-- SIMPLE ABC LIBRARY CONTENT-->               
          </div>
@@ -91,13 +93,13 @@
             <div class="col-lg-4 col-md-6 mb-4 ">
 <!-- PORTFOLIO IMAGE-->         
                 <div class="view overlay rounded z-depth-1">
-                    <img th:src="@{/img/projects/portfolio/marcin-mazur-portfolio-main-page.png}" class="img-fluid" alt="Marcin Mazur Portfolio">
-                    <a th:href="@{/marcin-mazur-portfolio}" ><div class="mask rgba-white-slight"></div></a>
+                    <img th:src="@{/img/projects/portfolio/marcin-mazur-portfolio-main-page.png}" class="img-fluid" alt="Marcin Mazur Portfolio Java Project">
+                    <a th:href="@{/java-project/marcin-mazur-portfolio}" ><div class="mask rgba-white-slight"></div></a>
                 </div>
 <!-- PORTFOLIO IMAGE-->
 <!-- PORTFOLIO CONTENT--> 
                 <div class="card-body pb-0">
-                    <a th:href="@{/marcin-mazur-portfolio}" class="btn btn-block bg-grey font-weight-bold text-white">Portfolio</a>
+                    <a th:href="@{/java-project/marcin-mazur-portfolio}" class="btn btn-block bg-grey font-weight-bold text-white">Portfolio</a>
                 </div>
 <!-- PORTFOLIO CONTENT-->                
             </div>
@@ -106,13 +108,13 @@
             <div class="col-lg-4 col-md-6 ">
 <!-- WEB CALCULATOR IMAGE -->              
                 <div class="view overlay rounded z-depth-1">
-                    <img th:src="@{/img/projects/calculator/web-calc-main-page.png}" class="img-fluid" alt="Simple ABC Library">
-                    <a th:href="@{/web-calculator}" ><div class="mask rgba-white-slight"></div></a>
+                    <img th:src="@{/img/projects/calculator/web-calc-main-page.png}" class="img-fluid" alt="Simple ABC Library Java Project">
+                    <a th:href="@{/java-project/web-calculator}" ><div class="mask rgba-white-slight"></div></a>
                 </div>
 <!-- WEB CALCULATOR IMAGE -->         
 <!-- WEB CALCULATOR CONTENT -->          
                 <div class="card-body pb-0">
-                    <a th:href="@{/web-calculator}" class="btn btn-block bg-grey font-weight-bold text-white">Web Calculator</a>
+                    <a th:href="@{/java-project/web-calculator}" class="btn btn-block bg-grey font-weight-bold text-white">Web Calculator</a>
                 </div>
             </div>
 <!-- WEB CALCULATOR CONTENT --> 
