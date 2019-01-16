@@ -70,7 +70,7 @@ public class AccessCode {
 	 * Sets the unique identification number of the AccessCode
 	 * 
 	 * @param id
-	 *            A long containings the unique identification number of the
+	 *            A long containing the unique identification number of the
 	 *            AccessCode
 	 */
 	public void setId(int id) {
@@ -90,7 +90,7 @@ public class AccessCode {
 	 * Sets the access code value of the AccessCode
 	 * 
 	 * @param accessCodeValue
-	 *            A String containings the access code value of the AccessCode
+	 *            A String containing the access code value of the AccessCode
 	 */
 	public void setAccessCodeValue(String accessCodeValue) {
 		this.accessCodeValue = accessCodeValue;
@@ -109,7 +109,7 @@ public class AccessCode {
 	 * Sets the date of added of the AccessCode
 	 * 
 	 * @param dateOfAdded
-	 *            A Date containings the date of added of the AccessCode
+	 *            A Date containing the date of added of the AccessCode
 	 */
 	public void setDateOfAdded(Date dateOfAdded) {
 		this.dateOfAdded = dateOfAdded;
@@ -128,7 +128,7 @@ public class AccessCode {
 	 * Sets the isActive status of the AccessCode
 	 * 
 	 * @param isActive
-	 *            A boolean containings the isActive status of the AccessCode
+	 *            A boolean containing the isActive status of the AccessCode
 	 */
 	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
@@ -147,7 +147,7 @@ public class AccessCode {
 	 * Sets the owner of the AccessCode
 	 * 
 	 * @param accessCodeOwner
-	 *            A String containings the owner of the AccessCode
+	 *            A String containing the owner of the AccessCode
 	 */
 	public void setAccessCodeOwner(String accessCodeOwner) {
 		this.accessCodeOwner = accessCodeOwner;
@@ -166,7 +166,7 @@ public class AccessCode {
 	 * Sets the description of the AccessCode
 	 * 
 	 * @param accessCodeDescription
-	 *            A String containings the description of the AccessCode
+	 *            A String containing the description of the AccessCode
 	 */
 	public void setAccessCodeDescription(String accessCodeDescription) {
 		this.accessCodeDescription = accessCodeDescription;

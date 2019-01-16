@@ -58,7 +58,7 @@ public class AccessCodeHistory {
 	 * Sets the unique identification number of the AccessCodeHistory
 	 * 
 	 * @param id
-	 *            A long containings the unique identification number of the
+	 *            A long containing the unique identification number of the
 	 *            AccessCodeHistory
 	 */
 	public void setId(int id) {
@@ -78,7 +78,7 @@ public class AccessCodeHistory {
 	 * Sets the access code value of the AccessCodeHistory
 	 * 
 	 * @param accessCodeValue
-	 *            A String containings the access code value of the
+	 *            A String containing the access code value of the
 	 *            AccessCodeHistory
 	 */
 	public void setAccessCodeValue(String accessCodeValue) {
@@ -98,7 +98,7 @@ public class AccessCodeHistory {
 	 * Sets the name of action of the AccessCodeHistory
 	 * 
 	 * @param action
-	 *            A String containings the name of action of the AccessCodeHistory
+	 *            A String containing the name of action of the AccessCodeHistory
 	 */
 	public void setAction(String action) {
 		this.action = action;
@@ -117,7 +117,7 @@ public class AccessCodeHistory {
 	 * Sets the date of action of the AccessCodeHistory
 	 * 
 	 * @param actionDate
-	 *            A Date containings the date of action of the AccessCodeHistory
+	 *            A Date containing the date of action of the AccessCodeHistory
 	 */
 	public void setActionDate(Date actionDate) {
 		this.actionDate = actionDate;

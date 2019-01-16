@@ -1,11 +1,11 @@
-// md bootstrap Toastr alert
+// MD bootstrap Toastr alert
 function showToastrAlert(alertType, messageTitle, messageText) {
 	$(function() {
 		toastr[alertType](messageTitle, messageText)
 	});
 
 		toastr.options = {
-			  "closeButton": false,
+			  "closeButton": true,
 			  "debug": false,
 			  "newestOnTop": false,
 			  "progressBar": true,
