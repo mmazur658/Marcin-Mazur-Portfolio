@@ -61,10 +61,23 @@
 		      </div>
 		      <div class="col-md-6 pl-3 mb-1">	     
 <!-- EDUCATION -->	    
-		        <h5 class="my-4 font-weight-bold" th:text="#{career.educational}"></h5>
-		        <div class="row">
+			    <h5 class="my-4 font-weight-bold" th:text="#{career.educational}"></h5>
+		        <div class="row my-1">
+		      		<div class="col-lg-3">01-2019<br><span th:text="#{carrer.time.present}"></span></div>
+		      		<div class="col-md-9" >
+			      		<span th:text="#{career.course.name}"></span>
+			      		<br>
+			      		<span th:text="#{career.course.class}"></span>
+		      		</div>
+		      	</div>		      	
+		      	
+		        <div class="row my-1">
 		      		<div class="col-lg-3">09-2005<br>04-2009</div>
-		      		<div class="col-md-9" th:text="#{career.school.name}"><br><span th:text="#{career.school.class}"></span></div>
+		      		<div class="col-md-9" >
+			      		<span th:text="#{career.school.name}"></span>
+			      		<br>
+			      		<span th:text="#{career.school.class}"></span>
+		      		</div>
 		      	</div>
 <!-- EDUCATION -->		      	
 <!-- LANGUAGES -->		      			   
@@ -103,13 +116,13 @@
 <!-- HOBBIES -->		          
 			</div>	 	     		
 		 </div>	
-	<!-- DOWNLOAD RESUME AND ML BUTTONS -->
+<!-- DOWNLOAD RESUME AND ML BUTTONS -->
 			<h5 class="mt-5 font-weight-bold" th:text="#{career.documents}"> </h5>
 			<div class="row ">
-				<div class="col-md-6">
+				<div class="col-md-6 my-1">
 					 <a th:href="@{/download-resume-pl}"class="btn bg-grey btn-block font-weight-bold text-white" th:text="#{career.resume.pl}"></a>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6 my-1">
 					<a th:href="@{/download-resume-en}" class="btn bg-grey btn-block font-weight-bold text-white" th:text="#{career.resume.en}"></a>
 				</div>
 			</div>
