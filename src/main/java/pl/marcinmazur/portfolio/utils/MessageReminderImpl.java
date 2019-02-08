@@ -20,6 +20,10 @@ import pl.marcinmazur.portfolio.service.RaportAndReminderService;
 @EnableScheduling
 public class MessageReminderImpl {
 
+	private final long ONE_HOUR = 60 * 60 * 1000;
+	private final String FULL_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	private final String VERY_SHORT_START_TIME = ".0";
+
 	/**
 	 * The RaportAndReminderService interface
 	 */
@@ -37,16 +41,17 @@ public class MessageReminderImpl {
 	}
 
 	/**
-	 * Generates Notification if the one or more messages are unread longer than scheduled time.
+	 * Generates Notification if the one or more messages are unread longer than
+	 * scheduled time.
 	 */
-	@Scheduled(fixedDelay = 60 * 60 * 1000)
+	@Scheduled(fixedDelay = ONE_HOUR)
 	public void unreadMessagaReminder() {
 
 		Calendar theCalendar = Calendar.getInstance();
 		theCalendar.add(Calendar.HOUR_OF_DAY, -1);
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String stringCurrentDate = sdf.format(theCalendar.getTime()) + ".0";
+		SimpleDateFormat sdf = new SimpleDateFormat(FULL_DATE_FORMAT);
+		String stringCurrentDate = sdf.format(theCalendar.getTime()) + VERY_SHORT_START_TIME;
 
 		raportAndReminderService.lookForUnreadMessages(stringCurrentDate);
 

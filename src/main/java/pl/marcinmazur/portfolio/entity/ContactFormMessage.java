@@ -287,7 +287,7 @@ public class ContactFormMessage {
 	}
 
 	/**
-	 * Constructs a ContactFormMessage with the date of added, the sedner name and
+	 * Constructs a ContactFormMessage with the date of added, the sender name and
 	 * email, the message text and subject, the isReaded, isActive and isReplied
 	 * status and with the list of the comments.
 	 * 

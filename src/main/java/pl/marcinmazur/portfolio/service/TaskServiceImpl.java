@@ -19,6 +19,8 @@ import pl.marcinmazur.portfolio.utils.ServiceUtils;
 @Service
 public class TaskServiceImpl implements TaskService {
 
+	private final String LIST_TYPE_ACTIVE = "active";
+
 	/**
 	 * The TaskDao interface
 	 */
@@ -53,8 +55,7 @@ public class TaskServiceImpl implements TaskService {
 	@Transactional
 	public List<Task> getTaskList(String taskListType) {
 
-		boolean isTypeOfListActive = (taskListType.equals("active")) ? true : false;
-
+		boolean isTypeOfListActive = (taskListType.equals(LIST_TYPE_ACTIVE)) ? true : false;
 		return taskDao.getTaskList(isTypeOfListActive);
 
 	}
@@ -74,10 +75,8 @@ public class TaskServiceImpl implements TaskService {
 			String taskDescription, boolean taskIsActive, boolean taskIsCompleted) {
 
 		Task task = taskDao.getTaskById(taskId);
-
 		serviceUtils.updateTask(task, taskName, taskDescription, taskIsActive, taskCategory, taskDate, taskDeadline,
 				taskIsCompleted);
-
 	}
 
 }

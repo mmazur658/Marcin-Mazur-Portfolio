@@ -13,12 +13,13 @@ public class SearchEngineUtilsImpl implements SearchEngineUtils {
 
 	@Override
 	public boolean hasTableAnyParameters(String[] searchParameters) {
-		boolean hasAnyParameters = false;
+	
 		for (int i = 0; i < searchParameters.length; i++) {
 			if (searchParameters[i] != "")
-				hasAnyParameters = true;
+				return true;
 		}
-		return hasAnyParameters;
+		
+		return false;
 	}
 
 	@Override
@@ -50,7 +51,7 @@ public class SearchEngineUtilsImpl implements SearchEngineUtils {
 			}
 		}
 
-		// last 3 fields contain the startDate, endDate and listType
+		// last 3 fields contain startDate, endDate and listType
 		String startDate = searchParameters[searchParameters.length - 3];
 		String endDate = searchParameters[searchParameters.length - 2];
 		String listType = searchParameters[searchParameters.length - 1];

@@ -20,6 +20,12 @@ import pl.marcinmazur.portfolio.entity.Task;
 @Component
 public class ServiceUtilsImpl implements ServiceUtils {
 
+	private final String BASIC_DATE_FORMAT = "yyyy-MM-dd";
+	private final String FULL_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	private final String START_TIME = " 00:00:00.0";
+	private final String SHORT_START_TIME = ":00.0";
+	private final String LIST_TYPE_NEW = "new";
+	private final String LIST_TYPE_ARCHIVE = "archive";
 
 	@Override
 	public ContactFormMessage createContactFormMessage(String senderEmail, String senderName, String messageText,
@@ -44,9 +50,11 @@ public class ServiceUtilsImpl implements ServiceUtils {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append(hqlType);
-		if (listType.equals("new"))
+
+		if (listType.equals(LIST_TYPE_NEW))
 			sb.append("where isActive=true ");
-		else if (listType.equals("archive"))
+
+		else if (listType.equals(LIST_TYPE_ARCHIVE))
 			sb.append("where isActive=false ");
 
 		sb.append("ORDER BY id DESC");
@@ -100,8 +108,8 @@ public class ServiceUtilsImpl implements ServiceUtils {
 		ProjectVisitingHistory projectVisitingHistory = new ProjectVisitingHistory();
 
 		projectVisitingHistory.setProjectName(projectName);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String date = sdf.format(new Date()) + " 00:00:00.0";
+		SimpleDateFormat sdf = new SimpleDateFormat(BASIC_DATE_FORMAT);
+		String date = sdf.format(new Date()) + START_TIME;
 
 		try {
 			projectVisitingHistory.setDate(sdf.parse(date));
@@ -125,8 +133,8 @@ public class ServiceUtilsImpl implements ServiceUtils {
 
 		if (taskDeadline != null) {
 			try {
-				taskDeadline = taskDeadline + ":00.0";
-				theTask.setDeadline(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(taskDeadline));
+				taskDeadline = taskDeadline + SHORT_START_TIME;
+				theTask.setDeadline(new SimpleDateFormat(FULL_DATE_FORMAT).parse(taskDeadline));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -151,13 +159,13 @@ public class ServiceUtilsImpl implements ServiceUtils {
 			if (taskDeadline == "" || taskDeadline == null) {
 				deadlineDate = null;
 			} else {
-				taskDeadline = taskDeadline + ":00.0";
-				deadlineDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(taskDeadline);
+				taskDeadline = taskDeadline + SHORT_START_TIME;
+				deadlineDate = new SimpleDateFormat(FULL_DATE_FORMAT).parse(taskDeadline);
 			}
 
-			taskDate = taskDate + ":00.0";
+			taskDate = taskDate + SHORT_START_TIME;
 
-			task.setDateOfAdded(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(taskDate));
+			task.setDateOfAdded(new SimpleDateFormat(FULL_DATE_FORMAT).parse(taskDate));
 			task.setDeadline(deadlineDate);
 		} catch (ParseException e) {
 			e.printStackTrace();

@@ -94,10 +94,8 @@ public class PortfolioController {
 		boolean isAccessGranted = (session.getAttribute("accessGranted") == null) ? false
 				: (boolean) session.getAttribute("accessGranted");
 
-		if (isAccessGranted)
-			return "parts/career";
-		else
-			return "parts/career-section-access-form";
+		return isAccessGranted ? "parts/career" : "parts/career-section-access-form";
+
 	}
 
 	/**

@@ -18,6 +18,9 @@ import pl.marcinmazur.portfolio.utils.NotificationUtils;
 @Service
 public class RaportAndReminderServiceImpl implements RaportAndReminderService {
 
+	private final String START_TIME = " 00:00:00.0";
+	private final String END_TIME = " 23:59:59.9";
+
 	/**
 	 * The ContactFormMessageDao interface
 	 */
@@ -56,8 +59,8 @@ public class RaportAndReminderServiceImpl implements RaportAndReminderService {
 	@Transactional
 	public long getNumberOfMessagesForGivenDate(String stringCurrentDate) {
 
-		String startDate = stringCurrentDate + " 00:00:00.0";
-		String endDate = stringCurrentDate + " 23:59:59.9";
+		String startDate = stringCurrentDate + START_TIME;
+		String endDate = stringCurrentDate + END_TIME;
 
 		return contactFormMessageDao.getNumberOfContactFormMessagesForGivenDate(startDate, endDate);
 	}
@@ -66,8 +69,8 @@ public class RaportAndReminderServiceImpl implements RaportAndReminderService {
 	@Transactional
 	public long getNumberOfUnreadMessagesForGivenDate(String stringCurrentDate) {
 
-		String startDate = stringCurrentDate + " 00:00:00.0";
-		String endDate = stringCurrentDate + " 23:59:59.9";
+		String startDate = stringCurrentDate + START_TIME;
+		String endDate = stringCurrentDate + END_TIME;
 
 		return contactFormMessageDao.getNumberOfUnreadContactFormMessagesForGivenDate(startDate, endDate);
 	}
@@ -97,6 +100,5 @@ public class RaportAndReminderServiceImpl implements RaportAndReminderService {
 		}
 
 	}
-
 
 }

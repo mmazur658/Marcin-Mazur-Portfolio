@@ -18,6 +18,8 @@ import pl.marcinmazur.portfolio.entity.AccessCodeHistory;
  */
 @Component
 public class AccessCodeUtilsImpl implements AccessCodeUtils {
+	
+	private final String FULL_DATE_FORMAT = "yyyy-MM-dd HH:mm";
 
 	@Override
 	public AccessCodeHistory createAccessCodeHistory(String accessCodeValue, String accessCodeHistoryActionName) {
@@ -32,10 +34,7 @@ public class AccessCodeUtilsImpl implements AccessCodeUtils {
 
 	@Override
 	public boolean hasCodeBeenUsedBefore(long numberOfCodeUsage) {
-
-		boolean hasCodeBeenUsedBefore = (numberOfCodeUsage > 0) ? true : false;
-
-		return hasCodeBeenUsedBefore;
+		return (numberOfCodeUsage > 0) ? true : false;
 	}
 
 	@Override
@@ -46,7 +45,7 @@ public class AccessCodeUtilsImpl implements AccessCodeUtils {
 		accessCode.setAccessCodeOwner(accessCodeOwner);
 		accessCode.setIsActive(accessCodeIsActive);
 		try {
-			accessCode.setDateOfAdded(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(accessCodeDate));
+			accessCode.setDateOfAdded(new SimpleDateFormat(FULL_DATE_FORMAT).parse(accessCodeDate));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

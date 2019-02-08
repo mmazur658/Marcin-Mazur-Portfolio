@@ -169,7 +169,6 @@ public class AdminController {
 	public String geContactFormMessageList(@RequestParam(name = "listType") String listType, Model theModel,
 			@RequestParam(required = false, name = "resultStartRange") Integer resultStartRange) {
 
-		// Integer resultRange = 20;
 		resultStartRange = (resultStartRange == null || resultStartRange == 0) ? 0 : resultStartRange;
 
 		List<ContactFormMessage> contactFormMessageList = contactFormMessageService.getContactFormMessages(listType,

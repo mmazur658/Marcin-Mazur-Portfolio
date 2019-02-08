@@ -19,6 +19,8 @@ import pl.marcinmazur.portfolio.service.RaportAndReminderService;
 @Component
 @EnableScheduling
 public class RaportCreatorImpl {
+	
+	private final String BASIC_DATE_FORMAT = "yyyy-MM-dd";
 
 	/**
 	 * The RaportAndReminderService interface
@@ -42,7 +44,7 @@ public class RaportCreatorImpl {
 	@Scheduled(cron = "0 0 0 * * *")
 	public void createDailyMessageRaport() {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat(BASIC_DATE_FORMAT);
 		String stringCurrentDate = sdf.format(new Date());
 
 		raportAndReminderService.createDailyMessageRaport(stringCurrentDate);

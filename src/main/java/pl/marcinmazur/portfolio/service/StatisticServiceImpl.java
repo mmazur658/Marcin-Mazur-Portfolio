@@ -24,6 +24,9 @@ import pl.marcinmazur.portfolio.utils.StatisticsUtils;
 @Service
 public class StatisticServiceImpl implements StatisticService {
 
+	private final String START_TIME = " 00:00:00.0";
+	private final String END_TIME = " 23:59:59.9";
+
 	/**
 	 * The ProjectVisitingHistoryDao interface
 	 */
@@ -227,8 +230,8 @@ public class StatisticServiceImpl implements StatisticService {
 	 */
 	public void transformDateToFullForm(String startDate, String endDate) {
 
-		startDate = startDate + " 00:00:00.0";
-		endDate = endDate + " 23:59:59.9";
+		startDate = startDate + START_TIME;
+		endDate = endDate + END_TIME;
 	}
 
 }

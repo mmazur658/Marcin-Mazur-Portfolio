@@ -109,7 +109,7 @@ public class Task {
 	/**
 	 * Gets the date of deadline of the Task
 	 * 
-	 * @return A Date representing the date of deadlin of the Task
+	 * @return A Date representing the date of deadline of the Task
 	 */
 	public Date getDeadline() {
 		return deadline;
@@ -119,7 +119,7 @@ public class Task {
 	 * Sets the date of deadlin of the Task
 	 * 
 	 * @param deadline
-	 *            A Date containing the date of deadlin of the Task
+	 *            A Date containing the date of deadline of the Task
 	 */
 	public void setDeadline(Date deadline) {
 		this.deadline = deadline;

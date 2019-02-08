@@ -44,7 +44,8 @@ public class UserDaoImpl implements UserDao {
 
 		try {
 			return theQuery.getSingleResult();
-		} catch (NoResultException e) {
+		} catch (NoResultException exception) {
+			exception.printStackTrace();
 			return null;
 		}
 

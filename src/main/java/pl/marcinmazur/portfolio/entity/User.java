@@ -102,7 +102,7 @@ public class User {
 	 * 
 	 * @param username The name of the user
 	 * @param password The password of the user
-	 * @param enabled the stauts of the user
+	 * @param enabled the status of the user
 	 */
 	public User(String username, String password, boolean enabled) {
 		this.username = username;

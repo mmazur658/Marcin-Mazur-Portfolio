@@ -19,6 +19,9 @@ import pl.marcinmazur.portfolio.utils.AccessCodeUtils;
 @Service
 public class AccessCodeHistoryServiceImpl implements AccessCodeHistoryService {
 
+	private final String CODE_CREATION_MESSAGE = "New access code has been created";
+	private final String CODE_USAGE_MESSAGE = "The access code has been used.";
+
 	/**
 	 * The AccessCodeHistoryDao interface
 	 */
@@ -56,8 +59,8 @@ public class AccessCodeHistoryServiceImpl implements AccessCodeHistoryService {
 	@Override
 	@Transactional
 	public void createNewAccessCodeHistory(String accessCodeValue) {
-		accessCodeHistoryDao.saveAccessCodeHistory(
-				accessCodeUtils.createAccessCodeHistory(accessCodeValue, "New access code has been created"));
+		accessCodeHistoryDao
+				.saveAccessCodeHistory(accessCodeUtils.createAccessCodeHistory(accessCodeValue, CODE_CREATION_MESSAGE));
 	}
 
 	@Override
@@ -69,8 +72,8 @@ public class AccessCodeHistoryServiceImpl implements AccessCodeHistoryService {
 		if (!hasCodeBeenUsedBefore)
 			notificationService.createNotificationAfterFirstCodeUsing(accessCodeValue);
 
-		accessCodeHistoryDao.saveAccessCodeHistory(
-				accessCodeUtils.createAccessCodeHistory(accessCodeValue, "The access code has been used."));
+		accessCodeHistoryDao
+				.saveAccessCodeHistory(accessCodeUtils.createAccessCodeHistory(accessCodeValue, CODE_USAGE_MESSAGE));
 	}
 
 	@Override
@@ -83,8 +86,7 @@ public class AccessCodeHistoryServiceImpl implements AccessCodeHistoryService {
 	@Transactional
 	public boolean hasCodeBeenUsedBefore(String accessCodeValue) {
 
-		long numberOfCodeUsage = accessCodeHistoryDao.getNumberOfCodeUsage(accessCodeValue,
-				"The access code has been used.");
+		long numberOfCodeUsage = accessCodeHistoryDao.getNumberOfCodeUsage(accessCodeValue, CODE_USAGE_MESSAGE);
 
 		return accessCodeUtils.hasCodeBeenUsedBefore(numberOfCodeUsage);
 

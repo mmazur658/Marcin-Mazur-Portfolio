@@ -19,25 +19,28 @@ import org.springframework.stereotype.Component;
 @Component
 public class StatisticsUtilsImpl implements StatisticsUtils {
 
+	private final String BASIC_DATE_FORMAT = "yyyy-MM-dd";
+	private final String START_TIME = " 00:00:00.0";
+
 	@Override
 	public String getDateMinusGivenValue(int value) {
 
 		value = value * (-1);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat(BASIC_DATE_FORMAT);
 
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.DAY_OF_MONTH, value);
 
 		Date tempDate = calendar.getTime();
 
-		return sdf.format(tempDate) + " 00:00:00.0";
+		return sdf.format(tempDate) + START_TIME;
 	}
 
 	@Override
 	public String getToday() {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		return sdf.format(new Date()) + " 00:00:00.0";
+		SimpleDateFormat sdf = new SimpleDateFormat(BASIC_DATE_FORMAT);
+		return sdf.format(new Date()) + START_TIME;
 	}
 
 	@Override

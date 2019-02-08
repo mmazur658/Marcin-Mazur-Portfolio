@@ -60,23 +60,19 @@ public class AccessCodeServiceImpl implements AccessCodeService {
 	public boolean isAccessCodeUnique(String accessCodeValue) {
 
 		AccessCode theAccessCode = accessCodeDao.getAccessCodeByValue(accessCodeValue);
-		boolean isAccessCodeUnique = (theAccessCode == null) ? true : false;
-
-		return isAccessCodeUnique;
+		return (theAccessCode == null) ? true : false;
 
 	}
 
 	@Override
 	@Transactional
 	public List<AccessCode> getAccessCodes() {
-
 		return accessCodeDao.getListOfAccessCodes();
 	}
 
 	@Override
 	@Transactional
 	public AccessCode getAccessCode(int accessCodeId) {
-
 		return accessCodeDao.getAccessCodeById(accessCodeId);
 	}
 
@@ -96,9 +92,8 @@ public class AccessCodeServiceImpl implements AccessCodeService {
 	public boolean isAccessCodeCorrect(String accessCodeValue) {
 
 		AccessCode theAccessCode = accessCodeDao.getAccessCodeByValue(accessCodeValue);
-		boolean isAccessCodeCorrect = (theAccessCode != null) ? true : false;
 
-		return isAccessCodeCorrect;
+		return (theAccessCode != null) ? true : false;
 
 	}
 
